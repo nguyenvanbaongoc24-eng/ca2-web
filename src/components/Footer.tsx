@@ -8,11 +8,6 @@ export default function Footer() {
         {/* Cột 1: Thông tin công ty */}
         <div>
           <Link href="/" className="flex items-center gap-3 mb-4 group cursor-pointer">
-            <svg width="42" height="42" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="drop-shadow-md group-hover:scale-105 transition-transform">
-              <rect width="100" height="100" rx="30" fill="#f97316"/>
-              <path d="M30 25 V75 L52 57 V43 Z" fill="white"/>
-              <path d="M70 75 V25 L48 43 V57 Z" fill="white"/>
-            </svg>
             <div className="flex items-baseline">
               <span className="font-extrabold text-[32px] tracking-tight text-white drop-shadow-sm">Ca2</span>
               <span className="font-bold text-[32px] tracking-tight text-[#f97316]">.Digital</span>
@@ -56,15 +51,15 @@ export default function Footer() {
           <ul className="space-y-3 text-sm opacity-80">
             <li className="flex items-start gap-2">
               <span className="text-orange-400 font-bold">📞</span>
-              <span>Hotline: 1900 1234</span>
+              <span>SDT: 0356 230 550</span>
             </li>
             <li className="flex items-start gap-2">
               <span className="text-orange-400 font-bold">✉️</span>
-              <span>Email: support@ca2.digital</span>
+              <span>Email: Kinhdoanh@nacencomm.vn</span>
             </li>
             <li className="flex items-start gap-2">
               <span className="text-orange-400 font-bold">📍</span>
-              <span>Tầng 12, Tòa nhà ABC, Quận Cầu Giấy, Hà Nội</span>
+              <span>Trụ sở chính: Tầng 3, 25 Nguyễn Huy Tưởng, Lê Văn Thiêm, Thanh Xuân Trung, Thanh Xuân, Hà Nội</span>
             </li>
           </ul>
         </div>

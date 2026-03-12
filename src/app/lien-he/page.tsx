@@ -22,21 +22,21 @@ export default function LienHe() {
                   <div className="p-3 bg-white/10 rounded-xl"><MapPin size={24}/></div>
                   <div>
                     <h4 className="font-bold text-lg text-blue-200">Trụ sở chính</h4>
-                    <p className="text-blue-50 mt-1 leading-relaxed">Tầng 12, Tòa nhà ABC, Số 123 Đường XYZ, Quận Cầu Giấy, Hà Nội</p>
+                    <p className="text-blue-50 mt-1 leading-relaxed">Tầng 3, 25 Nguyễn Huy Tưởng, Lê Văn Thiêm, Thanh Xuân Trung, Thanh Xuân, Hà Nội</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
                   <div className="p-3 bg-white/10 rounded-xl"><Phone size={24}/></div>
                   <div>
-                    <h4 className="font-bold text-lg text-blue-200">Hotline hỗ trợ 24/7</h4>
-                    <p className="text-blue-50 mt-1 leading-relaxed">1900 1234 - Kỹ thuật<br/>098 123 4567 - Kinh doanh</p>
+                    <h4 className="font-bold text-lg text-blue-200">SDT liên hệ</h4>
+                    <p className="text-blue-50 mt-1 leading-relaxed">0356 230 550</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
                   <div className="p-3 bg-white/10 rounded-xl"><Mail size={24}/></div>
                   <div>
                     <h4 className="font-bold text-lg text-blue-200">Email</h4>
-                    <p className="text-blue-50 mt-1 leading-relaxed">lienhe@ca2.digital<br/>support@ca2.digital</p>
+                    <p className="text-blue-50 mt-1 leading-relaxed">Kinhdoanh@nacencomm.vn</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">

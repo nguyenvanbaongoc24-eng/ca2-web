@@ -55,11 +55,6 @@ export default function Navbar() {
       <div className="container mx-auto px-6 lg:px-12 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 cursor-pointer group">
-          <svg width="42" height="42" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="drop-shadow-md group-hover:scale-105 transition-transform">
-            <rect width="100" height="100" rx="30" fill="#f97316"/>
-            <path d="M30 25 V75 L52 57 V43 Z" fill="white"/>
-            <path d="M70 75 V25 L48 43 V57 Z" fill="white"/>
-          </svg>
           <div className="flex items-baseline">
             <span className="font-extrabold text-[32px] tracking-tight text-white drop-shadow-sm">Ca2</span>
             <span className="font-bold text-[32px] tracking-tight text-[#f97316]">.Digital</span>
