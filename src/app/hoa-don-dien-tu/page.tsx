@@ -25,7 +25,7 @@ export default function HoaDonDienTu() {
           </motion.div>
           
           <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}>
-            <img src="/ca2-einvoice-banner.png" alt="CA2 E-Invoice - Phần mềm hóa đơn điện tử" className="w-full rounded-2xl drop-shadow-2xl" />
+            <img src="/ca2-web/ca2-einvoice-banner.png" alt="CA2 E-Invoice - Phần mềm hóa đơn điện tử" className="w-full rounded-2xl drop-shadow-2xl" />
           </motion.div>
         </div>
       </section>
@@ -40,7 +40,7 @@ export default function HoaDonDienTu() {
           
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <motion.div whileHover={{ y: -8 }} className="p-8 rounded-2xl bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-100 hover:shadow-xl transition-all group">
-              <img src="/ca2-sansang.webp" alt="Ca2 eInvoice Dashboard" className="w-full rounded-xl mb-6 shadow-md" />
+              <img src="/ca2-web/ca2-sansang.webp" alt="Ca2 eInvoice Dashboard" className="w-full rounded-xl mb-6 shadow-md" />
               <h3 className="text-2xl font-bold text-slate-800 mb-3">Ca2 eInvoice</h3>
               <p className="text-slate-600 mb-4 leading-relaxed">Phát hành tức thì, kết nối trực tiếp Tổng cục Thuế, lưu trữ an toàn 10 năm. Hỗ trợ đầy đủ các loại hóa đơn: GTGT, bán hàng, xuất khẩu.</p>
               <ul className="space-y-2 mb-6">
@@ -110,7 +110,7 @@ export default function HoaDonDienTu() {
               </ul>
             </div>
             <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }}>
-              <img src="/ca2-hatang.webp" alt="Hạ tầng Ca2 - ISO 27001 & eIDAS" className="w-full rounded-2xl shadow-xl" />
+              <img src="/ca2-web/ca2-hatang.webp" alt="Hạ tầng Ca2 - ISO 27001 & eIDAS" className="w-full rounded-2xl shadow-xl" />
             </motion.div>
           </div>
         </div>

@@ -21,7 +21,7 @@ export default function Footer() {
           <p className="text-sm opacity-80 leading-relaxed mb-6">
             Giải pháp số hóa toàn diện dành cho doanh nghiệp với nền tảng bảo mật cao và vận hành tối ưu.
           </p>
-          <img src="/ca2-press.webp" alt="Đội ngũ Nacencomm - Ca2" className="w-full rounded-lg mb-4 opacity-70 grayscale hover:grayscale-0 transition-all" />
+          <img src="/ca2-web/ca2-press.webp" alt="Đội ngũ Nacencomm - Ca2" className="w-full rounded-lg mb-4 opacity-70 grayscale hover:grayscale-0 transition-all" />
           <p className="mt-4 text-xs opacity-60">© 2026 Ca2.Digital. All rights reserved.</p>
         </div>
 

@@ -23,8 +23,8 @@ export default function BHXH() {
             </Link>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8, delay: 0.2 }}>
-            <img src="/hero-bhxh.png" alt="BHXH điện tử" className="w-full rounded-2xl drop-shadow-2xl" />
+          <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}>
+            <img src="/ca2-web/hero-bhxh.png" alt="BHXH điện tử Ca2" className="w-full rounded-2xl drop-shadow-2xl" />
           </motion.div>
         </div>
       </section>

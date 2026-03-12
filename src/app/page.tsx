@@ -37,7 +37,7 @@ export default function Home() {
             className="relative"
           >
             <img 
-              src="/hero-homepage.png" 
+              src="/ca2-web/hero-homepage.png" 
               alt="Giải pháp chuyển đổi số toàn diện cho doanh nghiệp" 
               className="w-full rounded-2xl shadow-2xl"
             />
@@ -98,7 +98,7 @@ export default function Home() {
         <div className="container mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-16 items-center">
           <div className="order-2 lg:order-1 relative rounded-2xl overflow-hidden shadow-xl aspect-square flex flex-col items-center justify-center border border-slate-200 p-8">
             <div className="absolute inset-0 opacity-20">
-              <img src="/ca2-solution-bg.png" alt="Background" className="w-full h-full object-cover" />
+              <img src="/ca2-web/ca2-solution-bg.png" alt="Background" className="w-full h-full object-cover" />
             </div>
             <motion.div 
               initial={{ opacity: 0, y: 30 }}
@@ -172,7 +172,7 @@ export default function Home() {
         <div className="container mx-auto px-6 lg:px-12 text-center">
           <h3 className="text-sm font-semibold text-slate-400 tracking-widest uppercase mb-8">Đối tác đồng hành & Khách hàng tiêu biểu</h3>
           <div className="max-w-5xl mx-auto flex justify-center items-center opacity-80 hover:opacity-100 transition-opacity">
-            <img src="/ca2-partners.webp" alt="Đối tác và khách hàng tiêu biểu của Ca2" className="w-full h-auto" />
+            <img src="/ca2-web/ca2-partners.webp" alt="Đối tác và khách hàng tiêu biểu của Ca2" className="w-full h-auto" />
           </div>
         </div>
       </section>

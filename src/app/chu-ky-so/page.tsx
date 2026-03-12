@@ -78,7 +78,7 @@ export default function ChuKySo() {
             <Link href="/lien-he" className="inline-block px-8 py-4 bg-white text-purple-900 font-bold rounded-full shadow-lg transition-all hover:shadow-purple-500/30 hover:-translate-y-1">Nhận báo giá ngay</Link>
           </motion.div>
           <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6, delay: 0.2 }}>
-            <img src="/hero-signature.png" alt="Chữ ký số Ca2" className="w-full rounded-2xl drop-shadow-2xl" />
+            <img src="/ca2-web/hero-signature.png" alt="Chữ ký số Ca2" className="w-full rounded-2xl drop-shadow-2xl" />
           </motion.div>
         </div>
       </section>
@@ -154,7 +154,7 @@ export default function ChuKySo() {
             </motion.div>
             <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="relative">
               <div className="absolute inset-0 bg-indigo-500/10 blur-3xl rounded-full"></div>
-              <img src="/ca2-sign-platform.png" alt="Ca2 Sign Platform Interface" className="relative w-full rounded-2xl shadow-2xl border border-slate-200" />
+              <img src="/ca2-web/ca2-sign-platform.png" alt="Ca2 Sign Platform Interface" className="relative w-full rounded-2xl shadow-2xl border border-slate-200" />
             </motion.div>
           </div>
 
@@ -184,7 +184,7 @@ export default function ChuKySo() {
             </motion.div>
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="lg:order-1 relative">
               <div className="absolute inset-0 bg-purple-500/10 blur-3xl rounded-full"></div>
-              <img src="/ca2-remote-signing.png" alt="Ca2 Remote Signing Mobile App" className="relative w-full rounded-2xl shadow-2xl" />
+              <img src="/ca2-web/ca2-remote-signing.png" alt="Ca2 Remote Signing Mobile App" className="relative w-full rounded-2xl shadow-2xl" />
             </motion.div>
           </div>
         </div>
@@ -199,7 +199,7 @@ export default function ChuKySo() {
             viewport={{ once: true }}
             className="rounded-3xl overflow-hidden shadow-2xl relative"
           >
-            <img src="/ca2-logo-3d.webp" alt="Miễn phí chữ ký số công dân" className="w-full h-auto" />
+            <img src="/ca2-web/ca2-logo-3d.webp" alt="Miễn phí chữ ký số công dân" className="w-full h-auto" />
             <div className="absolute inset-0 bg-gradient-to-r from-blue-900/40 to-transparent pointer-events-none"></div>
           </motion.div>
         </div>
