@@ -36,7 +36,7 @@ export default function LienHe() {
                   <div className="p-3 bg-white/10 rounded-xl"><Mail size={24}/></div>
                   <div>
                     <h4 className="font-bold text-lg text-blue-200">Email</h4>
-                    <p className="text-blue-50 mt-1 leading-relaxed">lienhe@ca2.one<br/>support@ca2.one</p>
+                    <p className="text-blue-50 mt-1 leading-relaxed">lienhe@ca2.digital<br/>support@ca2.digital</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
