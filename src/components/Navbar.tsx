@@ -49,9 +49,9 @@ const menuData = [
     children: [
       { label: 'Tra cứu CKS', desc: 'Kiểm tra chứng thư số trực tuyến', href: '/ho-tro', icon: Shield, color: 'text-indigo-600 bg-indigo-100' },
       { label: 'Tra cứu HĐĐT', desc: 'Tra cứu hóa đơn đã phát hành', href: '/ho-tro', icon: FileText, color: 'text-sky-600 bg-sky-100' },
-      { label: 'Tải về', href: '/ho-tro' },
-      { label: 'Hướng dẫn', href: '/ho-tro' },
-      { label: 'Hỗ trợ nhanh', href: '/ho-tro#quick-support' },
+      { label: 'Tải về', desc: 'Driver & Phần mềm liên quan', href: '/ho-tro', icon: UsbIcon, color: 'text-emerald-600 bg-emerald-100' },
+      { label: 'Hướng dẫn', desc: 'Tài liệu hướng dẫn sử dụng', href: '/ho-tro', icon: KeyRound, color: 'text-amber-600 bg-amber-100' },
+      { label: 'Hỗ trợ nhanh', desc: 'Gửi yêu cầu Ultraview hỗ trợ ngay', href: '/ho-tro#quick-support', icon: Smartphone, color: 'text-orange-600 bg-orange-100' },
     ]
   },
   { label: 'Liên hệ', href: '/lien-he' },
