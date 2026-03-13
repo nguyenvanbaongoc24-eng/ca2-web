@@ -11,6 +11,7 @@ const menuData = [
     children: [
       { label: 'Ca2 eInvoice', desc: 'Hóa đơn điện tử chuẩn TCT', href: '/hoa-don-dien-tu', icon: FileText, color: 'text-blue-600 bg-blue-100' },
       { label: 'Ca2 Accounting', desc: 'Phần mềm kế toán thông minh', href: '/hoa-don-dien-tu', icon: Calculator, color: 'text-emerald-600 bg-emerald-100' },
+      { label: 'Ca2 POS', desc: 'Quản lý bán hàng trên Mobile', href: '/hoa-don-dien-tu', icon: Smartphone, color: 'text-orange-600 bg-orange-100' },
     ],
   },
   {
@@ -31,6 +32,25 @@ const menuData = [
     children: [
       { label: 'Kê khai BHXH', desc: 'Kê khai bảo hiểm xã hội online', href: '/bao-hiem-xa-hoi', icon: HeartPulse, color: 'text-green-600 bg-green-100' },
       { label: 'Ca2 CO-VAN', desc: 'Nhận truyền BHXH', href: '/bao-hiem-xa-hoi', icon: Users, color: 'text-orange-600 bg-orange-100' },
+    ],
+  },
+  {
+    label: 'Tin tức',
+    href: '/blog',
+    children: [
+      { label: 'Tin khuyến mãi', desc: 'Ưu đãi mới nhất từ CA2', href: '/blog', icon: FileText, color: 'text-pink-600 bg-pink-100' },
+      { label: 'Tin chuyên ngành', desc: 'Cập nhật chính sách & pháp luật', href: '/blog', icon: Globe, color: 'text-blue-600 bg-blue-100' },
+      { label: 'Thông báo', desc: 'Thông báo quan trọng từ hệ thống', href: '/blog', icon: Clock, color: 'text-slate-600 bg-slate-100' },
+    ],
+  },
+  {
+    label: 'Hỗ trợ',
+    href: '/ho-tro',
+    children: [
+      { label: 'Tra cứu CKS', desc: 'Kiểm tra chứng thư số trực tuyến', href: '/ho-tro', icon: Shield, color: 'text-indigo-600 bg-indigo-100' },
+      { label: 'Tra cứu HĐĐT', desc: 'Tra cứu hóa đơn đã phát hành', href: '/ho-tro', icon: FileText, color: 'text-sky-600 bg-sky-100' },
+      { label: 'Tải về', desc: 'Driver & Phần mềm liên quan', href: '/ho-tro', icon: UsbIcon, color: 'text-emerald-600 bg-emerald-100' },
+      { label: 'Hướng dẫn', desc: 'Tài liệu hướng dẫn sử dụng', href: '/ho-tro', icon: KeyRound, color: 'text-amber-600 bg-amber-100' },
     ],
   },
   { label: 'Liên hệ', href: '/lien-he' },
