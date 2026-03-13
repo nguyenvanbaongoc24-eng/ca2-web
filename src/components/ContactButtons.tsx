@@ -50,28 +50,14 @@ const ContactButtons = () => {
     {
       id: 'zalo',
       icon: (
-        <svg viewBox="0 0 40 40" width="40" height="40" className="rounded-xl overflow-hidden shadow-sm">
-          <rect width="40" height="40" fill="#0068ff" />
-          <path 
-            d="M20 9c-5.5 0-10 3.6-10 8 0 2.5 1.5 4.7 3.8 6.2-.1.5-.5 1.8-.8 2.8 0 0-.1.3 0 .3.1.1.3 0 .3 0 .9-.5 2.1-1.3 3.1-1.9.1 0 .2-.1.3-.1 1.1.4 2.2.6 3.3.6 5.5 0 10-3.6 10-8s-4.5-8-10-8z" 
-            fill="white" 
-          />
-          <text 
-            x="20" 
-            y="21" 
-            textAnchor="middle" 
-            fill="#0068ff" 
-            style={{ fontSize: '7px', fontWeight: '900', fontFamily: 'Arial, sans-serif' }}
-          >
-            Zalo
-          </text>
-        </svg>
+        <span className="text-[#0068ff] font-[900] text-sm tracking-tight">Zalo</span>
       ),
       label: 'Zalo OA',
-      color: 'bg-transparent',
-      hoverColor: 'hover:opacity-90',
+      color: 'bg-white',
+      hoverColor: 'hover:bg-slate-50',
       link: 'https://zalo.me/0356230550',
-      external: true
+      external: true,
+      shadow: "shadow-[0_0_15px_rgba(0,104,255,0.2)]"
     }
   ];
 
