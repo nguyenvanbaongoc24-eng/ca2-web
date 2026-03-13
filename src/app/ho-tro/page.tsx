@@ -172,7 +172,7 @@ export default function SupportPage() {
                     value={formData.full_name}
                     onChange={(e) => setFormData({...formData, full_name: e.target.value})}
                     placeholder="Nguyễn Văn A" 
-                    className="w-full px-5 py-4 rounded-2xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all bg-white font-bold text-slate-800" 
+                    className="w-full px-5 py-4 rounded-2xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all bg-white font-extrabold text-slate-900 placeholder:font-semibold placeholder:text-slate-400" 
                   />
                 </div>
                 <div className="space-y-2">
@@ -183,7 +183,7 @@ export default function SupportPage() {
                     value={formData.phone}
                     onChange={(e) => setFormData({...formData, phone: e.target.value})}
                     placeholder="09xx xxx xxx" 
-                    className="w-full px-5 py-4 rounded-2xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all bg-white font-bold text-slate-800" 
+                    className="w-full px-5 py-4 rounded-2xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all bg-white font-extrabold text-slate-900 placeholder:font-semibold placeholder:text-slate-400" 
                   />
                 </div>
                 <div className="space-y-2">
@@ -194,7 +194,7 @@ export default function SupportPage() {
                     value={formData.ultraview_id}
                     onChange={(e) => setFormData({...formData, ultraview_id: e.target.value})}
                     placeholder="12 345 678" 
-                    className="w-full px-5 py-4 rounded-2xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all bg-white font-bold text-slate-800" 
+                    className="w-full px-5 py-4 rounded-2xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all bg-white font-extrabold text-slate-900 placeholder:font-semibold placeholder:text-slate-400" 
                   />
                 </div>
                 <div className="space-y-2">
@@ -205,7 +205,7 @@ export default function SupportPage() {
                     value={formData.ultraview_pass}
                     onChange={(e) => setFormData({...formData, ultraview_pass: e.target.value})}
                     placeholder="xxxx" 
-                    className="w-full px-5 py-4 rounded-2xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all bg-white font-bold text-slate-800" 
+                    className="w-full px-5 py-4 rounded-2xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all bg-white font-extrabold text-slate-900 placeholder:font-semibold placeholder:text-slate-400" 
                   />
                 </div>
                 <div className="md:col-span-2 space-y-2">
@@ -214,7 +214,7 @@ export default function SupportPage() {
                     required
                     value={formData.issue_type}
                     onChange={(e) => setFormData({...formData, issue_type: e.target.value})}
-                    className="w-full px-5 py-4 rounded-2xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all bg-white appearance-none font-bold text-slate-800"
+                    className="w-full px-5 py-4 rounded-2xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all bg-white appearance-none font-extrabold text-slate-900"
                   >
                     <option value="">-- Chọn vấn đề cần xử lý --</option>
                     <option value="cks">Cài đặt chữ ký số (USB Token)</option>
