@@ -19,8 +19,8 @@ const slides = [
     id: 2,
     title: "Chữ Ký Số Ca2 - Ký số mọi lúc mọi nơi",
     highlight: "An toàn & Bảo mật",
-    desc: "Trải nghiệm giải pháp Remote Signing và Sign Platform tiên tiến nhất. Ký kết hợp đồng, khai thuế chỉ trong tích tắc với độ pháp lý tuyệt đối.",
-    img: "/ca2-web/ca2-remote-signing.png",
+    desc: "Giải pháp chữ ký số USB Token và Remote Signing tin cậy. Ký kết mọi văn bản, hợp đồng, khai thuế chỉ trong vài giây với độ bảo mật và pháp lý tối đa.",
+    img: "/ca2-web/usb-token-ca2.png",
     bgColor: "from-purple-900 via-[#0f172a] to-slate-900",
     accent: "text-purple-400",
     button: "Đăng ký CKS"
