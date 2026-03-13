@@ -94,7 +94,7 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Links */}
-        <nav className="hidden xl:flex items-center gap-4">
+        <nav className="hidden xl:flex items-center gap-2">
           {menuData.map((item) => (
             <div
               key={item.label}
@@ -104,7 +104,7 @@ export default function Navbar() {
             >
               <Link
                 href={item.href}
-                className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-slate-200 text-sm font-medium hover:text-white hover:bg-white/10 transition-all duration-200 ${openDropdown === item.label ? 'text-white bg-white/10' : ''} whitespace-nowrap`}
+                className={`flex items-center gap-1.5 px-2.5 py-2 rounded-lg text-slate-200 text-sm font-medium hover:text-white hover:bg-white/10 transition-all duration-200 ${openDropdown === item.label ? 'text-white bg-white/10' : ''} whitespace-nowrap`}
               >
                 {item.label}
                 {item.children && <ChevronDown size={14} className={`transition-transform duration-200 ${openDropdown === item.label ? 'rotate-180' : ''}`} />}
@@ -142,7 +142,7 @@ export default function Navbar() {
         </nav>
 
         {/* Desktop Links (Large screens but not XL) - Fallback for slightly smaller screens */}
-        <nav className="hidden lg:flex xl:hidden items-center gap-2">
+        <nav className="hidden lg:flex xl:hidden items-center gap-1">
           {menuData.map((item) => (
             <div
               key={item.label}
@@ -152,7 +152,7 @@ export default function Navbar() {
             >
               <Link
                 href={item.href}
-                className={`flex items-center gap-1 px-2 py-2 rounded-lg text-slate-200 text-[13px] font-medium hover:text-white hover:bg-white/10 transition-all duration-200 ${openDropdown === item.label ? 'text-white bg-white/10' : ''} whitespace-nowrap`}
+                className={`flex items-center gap-1 px-1.5 py-2 rounded-lg text-slate-200 text-[13px] font-medium hover:text-white hover:bg-white/10 transition-all duration-200 ${openDropdown === item.label ? 'text-white bg-white/10' : ''} whitespace-nowrap`}
               >
                 {item.label}
                 {item.children && <ChevronDown size={12} className={`transition-transform duration-200 ${openDropdown === item.label ? 'rotate-180' : ''}`} />}
@@ -162,11 +162,11 @@ export default function Navbar() {
         </nav>
 
         {/* Right Actions & Buttons */}
-        <div className="hidden lg:flex items-center gap-4">
+        <div className="hidden lg:flex items-center gap-3 shrink-0">
           <select 
             value={language}
             onChange={(e) => setLanguage(e.target.value)}
-            className={`bg-transparent text-sm font-semibold outline-none cursor-pointer hover:opacity-80 transition-opacity ${isScrolled ? 'text-white' : 'text-white'}`}
+            className={`bg-transparent text-[13px] xl:text-sm font-semibold outline-none cursor-pointer hover:opacity-80 transition-opacity ${isScrolled ? 'text-white' : 'text-white'}`}
           >
             <option value="vi" className="text-slate-900 border-none">🇻🇳 VN</option>
             <option value="en" className="text-slate-900">🇬🇧 EN</option>
@@ -175,11 +175,11 @@ export default function Navbar() {
           
           <div className="w-px h-5 bg-white/20"></div>
           
-          <button className="text-white hover:text-orange-300 transition-colors p-2">
-            <Search size={20} strokeWidth={2.5} />
+          <button className="text-white hover:text-orange-300 transition-colors p-1.5 xl:p-2">
+            <Search size={18} strokeWidth={2.5} className="xl:h-5 xl:w-5" />
           </button>
           
-          <Link href="/lien-he" className="ml-4 px-6 py-2.5 rounded-full bg-[#f97316] text-sm text-white font-bold hover:bg-orange-400 hover:shadow-lg hover:shadow-orange-500/30 hover:-translate-y-0.5 transition-all duration-300 whitespace-nowrap">
+          <Link href="/lien-he" className="ml-1 xl:ml-2 px-4 xl:px-5 py-2 xl:py-2.5 rounded-full bg-[#f97316] text-[13px] xl:text-sm text-white font-bold hover:bg-orange-400 hover:shadow-lg hover:shadow-orange-500/30 hover:-translate-y-0.5 transition-all duration-300 whitespace-nowrap">
             Đăng ký tư vấn
           </Link>
         </div>
