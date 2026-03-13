@@ -23,6 +23,7 @@ const PRODUCTS: Record<string, {
   features: string[];
   benefits: { title: string; desc: string }[];
   cta: string;
+  pricingAnchor: string;
 }> = {
   'ca2-einvoice': {
     name: 'Ca2 eInvoice',
@@ -30,6 +31,7 @@ const PRODUCTS: Record<string, {
     description: 'Giải pháp hóa đơn điện tử toàn diện, đáp ứng đầy đủ quy định theo Nghị định 123/2020/NĐ-CP và Thông tư 78/2021/TT-BTC. Tích hợp chữ ký số, tự động gửi CQT, quản lý hóa đơn tập trung trên nền tảng cloud.',
     color: 'from-blue-500 to-indigo-600',
     icon: FileText,
+    pricingAnchor: '#hoa-don',
     features: [
       'Phát hành hóa đơn điện tử theo Nghị định 123/2020',
       'Tự động gửi hóa đơn đến Tổng cục Thuế (CQT)',
@@ -53,6 +55,7 @@ const PRODUCTS: Record<string, {
     description: 'Giải pháp quản lý hóa đơn đầu vào tự động cho doanh nghiệp. Ca2 IMV giúp thu thập, phân loại, đối soát và lưu trữ toàn bộ hóa đơn mua hàng từ nhà cung cấp. Tích hợp AI nhận dạng tự động, giảm thiểu sai sót thủ công.',
     color: 'from-violet-500 to-purple-600',
     icon: Inbox,
+    pricingAnchor: '#hoa-don',
     features: [
       'Tự động thu thập hóa đơn đầu vào từ email, CQT',
       'AI phân loại và nhận dạng nội dung hóa đơn',
@@ -76,6 +79,7 @@ const PRODUCTS: Record<string, {
     description: 'Phần mềm kế toán online thế hệ mới, tích hợp sẵn hóa đơn điện tử và chữ ký số của Ca2. Quản lý sổ sách, lập báo cáo tài chính, kê khai thuế tự động – tất cả trên một nền tảng duy nhất.',
     color: 'from-emerald-500 to-teal-600',
     icon: Calculator,
+    pricingAnchor: '#ke-toan',
     features: [
       'Hạch toán tự động theo chuẩn VAS',
       'Tích hợp sẵn Ca2 eInvoice & Ca2 IMV',
@@ -99,6 +103,7 @@ const PRODUCTS: Record<string, {
     description: 'Ứng dụng quản lý bán hàng di động tích hợp hóa đơn điện tử. Phù hợp cho cửa hàng bán lẻ, nhà hàng, quán cafe. Xuất hóa đơn ngay tại quầy, quản lý tồn kho và doanh thu theo thời gian thực.',
     color: 'from-orange-500 to-red-500',
     icon: Smartphone,
+    pricingAnchor: '#hoa-don',
     features: [
       'Bán hàng & xuất HĐĐT ngay trên điện thoại',
       'Quản lý tồn kho đa kho theo thời gian thực',
@@ -122,6 +127,7 @@ const PRODUCTS: Record<string, {
     description: 'Giải pháp khởi tạo, phát hành và quản lý chứng từ khấu trừ thuế TNCN điện tử theo quy định. Đáp ứng đầy đủ mẫu 03/KK-TNCN, tự động gửi cho người lao động qua email và lưu trữ trên hệ thống.',
     color: 'from-rose-500 to-pink-600',
     icon: FileText,
+    pricingAnchor: '#hoa-don',
     features: [
       'Khởi tạo chứng từ khấu trừ thuế TNCN điện tử',
       'Đáp ứng mẫu 03/KK-TNCN theo quy định TCT',
@@ -145,6 +151,7 @@ const PRODUCTS: Record<string, {
     description: 'Giải pháp kê khai BHXH, BHYT, BHTN điện tử dành cho doanh nghiệp. Tích hợp chữ ký số, gửi hồ sơ trực tiếp đến cơ quan BHXH, theo dõi trạng thái xử lý online.',
     color: 'from-green-500 to-emerald-600',
     icon: HeartPulse,
+    pricingAnchor: '#chu-ky-so',
     features: [
       'Kê khai BHXH, BHYT, BHTN trực tuyến',
       'Tích hợp chữ ký số Ca2 ký số tự động',
@@ -168,6 +175,7 @@ const PRODUCTS: Record<string, {
     description: 'Dịch vụ chữ ký số từ xa cho phép ký số mọi lúc mọi nơi bằng thiết bị di động. Không cần USB Token, không cần cài phần mềm. Xác thực bằng OTP/sinh trắc học, đảm bảo an toàn cao nhất.',
     color: 'from-purple-500 to-indigo-600',
     icon: Smartphone,
+    pricingAnchor: '#chu-ky-so',
     features: [
       'Ký số từ xa bằng điện thoại di động',
       'Không cần USB Token hay cài phần mềm',
@@ -191,6 +199,7 @@ const PRODUCTS: Record<string, {
     description: 'Nền tảng ký số doanh nghiệp toàn diện, hỗ trợ ký điện tử mọi loại tài liệu. Tích hợp quy trình phê duyệt, quản lý tập trung, API mở cho phép kết nối với mọi phần mềm.',
     color: 'from-indigo-500 to-blue-600',
     icon: KeyRound,
+    pricingAnchor: '#chu-ky-so',
     features: [
       'Ký điện tử mọi loại tài liệu PDF, Office',
       'Quy trình phê duyệt đa cấp tùy chỉnh',
@@ -214,6 +223,7 @@ const PRODUCTS: Record<string, {
     description: 'Thiết bị USB Token chữ ký số chuẩn quốc tế, tương thích mọi hệ điều hành. Sử dụng cho kê khai thuế, ký hóa đơn, BHXH, ngân hàng điện tử. Bảo mật phần cứng cao nhất.',
     color: 'from-sky-500 to-blue-600',
     icon: UsbIcon,
+    pricingAnchor: '#chu-ky-so',
     features: [
       'Chữ ký số phần cứng chuẩn FIPS 140-2',
       'Tương thích Windows, MacOS, Linux',
@@ -237,6 +247,7 @@ const PRODUCTS: Record<string, {
     description: 'Module bảo mật phần cứng (HSM) chuyên dụng cho server, dành cho doanh nghiệp lớn cần ký số khối lượng lớn. Hiệu suất ký cao, bảo mật cấp doanh nghiệp, đáp ứng tiêu chuẩn quốc tế.',
     color: 'from-red-500 to-rose-600',
     icon: Shield,
+    pricingAnchor: '#chu-ky-so',
     features: [
       'Module HSM chuyên dụng lắp trên server',
       'Hiệu suất ký lên đến 10.000 chữ ký/giây',
@@ -260,6 +271,7 @@ const PRODUCTS: Record<string, {
     description: 'Chứng chỉ SSL/TLS bảo mật website của bạn, mã hóa dữ liệu truyền tải giữa người dùng và máy chủ. Hỗ trợ DV, OV, EV SSL cho mọi quy mô từ cá nhân đến doanh nghiệp lớn.',
     color: 'from-teal-500 to-green-600',
     icon: Globe,
+    pricingAnchor: '#chu-ky-so',
     features: [
       'Chứng chỉ SSL/TLS quốc tế uy tín',
       'Hỗ trợ DV, OV, EV SSL Certificate',
@@ -283,6 +295,7 @@ const PRODUCTS: Record<string, {
     description: 'Dịch vụ gán dấu thời gian (Timestamp Authority) cho tài liệu đã ký số, đảm bảo xác thực thời điểm ký. Tuân thủ tiêu chuẩn RFC 3161, tương thích với mọi hệ thống ký số.',
     color: 'from-amber-500 to-orange-600',
     icon: Clock,
+    pricingAnchor: '#chu-ky-so',
     features: [
       'Gán dấu thời gian chính xác cho chữ ký số',
       'Tuân thủ tiêu chuẩn RFC 3161',
@@ -345,7 +358,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                 <Link href="/lien-he" className="px-8 py-3.5 bg-white text-slate-900 font-bold rounded-full hover:shadow-xl hover:-translate-y-0.5 transition-all">
                   {product.cta}
                 </Link>
-                <Link href="/bao-gia" className="px-8 py-3.5 bg-white/10 border-2 border-white/30 text-white font-bold rounded-full hover:bg-white/20 transition-all">
+                <Link href={`/bao-gia${product.pricingAnchor}`} className="px-8 py-3.5 bg-white/10 border-2 border-white/30 text-white font-bold rounded-full hover:bg-white/20 transition-all">
                   Xem báo giá
                 </Link>
               </div>
@@ -398,7 +411,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               <Link href="/lien-he" className="px-8 py-3.5 bg-white text-slate-900 font-bold rounded-full hover:shadow-xl hover:-translate-y-0.5 transition-all">
                 Đăng ký tư vấn miễn phí
               </Link>
-              <Link href="/bao-gia" className="px-8 py-3.5 bg-white/10 border-2 border-white/30 text-white font-bold rounded-full hover:bg-white/20 transition-all">
+              <Link href={`/bao-gia${product.pricingAnchor}`} className="px-8 py-3.5 bg-white/10 border-2 border-white/30 text-white font-bold rounded-full hover:bg-white/20 transition-all">
                 Xem bảng giá
               </Link>
             </div>
