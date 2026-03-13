@@ -51,6 +51,7 @@ export default function SupportPage() {
   });
   const [loading, setLoading] = React.useState(false);
   const [status, setStatus] = React.useState<'idle' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = React.useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -65,6 +66,7 @@ export default function SupportPage() {
     if (error) {
       console.error('Error submitting form:', error);
       setStatus('error');
+      setErrorMessage(error.message || 'Lỗi không xác định từ máy chủ');
     } else {
       setStatus('success');
       setFormData({
@@ -159,7 +161,8 @@ export default function SupportPage() {
 
               {status === 'error' && (
                 <div className="mb-8 p-6 bg-red-100 border border-red-200 text-red-700 rounded-3xl font-bold">
-                  Có lỗi xảy ra khi gửi yêu cầu. Vui lòng thử lại hoặc gọi Hotline.
+                  <div>Có lỗi xảy ra khi gửi yêu cầu. Vui lòng thử lại hoặc gọi Hotline.</div>
+                  {errorMessage && <div className="mt-2 text-sm font-normal opacity-80">Chi tiết lỗi: {errorMessage}</div>}
                 </div>
               )}
 
