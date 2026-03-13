@@ -29,11 +29,21 @@ const slides = [
     id: 3,
     title: "Hóa Đơn Điện Tử Chuẩn Tổng Cục Thuế",
     highlight: "Minh bạch & Thông minh",
-    desc: "Hệ thống Ca2 eInvoice chịu tải cao, phát hành hàng triệu hóa đơn không gián đoạn. Tích hợp sẵn với mọi phần mềm kế toán phổ biến.",
+    desc: "Hệ thống Ca2 eInvoice với hạ tầng chịu tải lớn, phát hành hàng triệu hóa đơn không gián đoạn. Tự động đồng bộ dữ liệu với mọi phần mềm kế toán.",
     img: "/ca2-web/ca2-einvoice-banner.png",
     bgColor: "from-orange-900 via-[#0f172a] to-slate-900",
     accent: "text-orange-400",
     button: "Dùng thử miễn phí"
+  },
+  {
+    id: 4,
+    title: "Ca2 POS - Quản lý bán hàng thông minh",
+    highlight: "Kinh doanh hiện đại",
+    desc: "Giải pháp quản lý bán hàng chuyên sâu trên Mobile và Tablet. Tích hợp thanh toán, quản lý kho và báo cáo doanh thu realtime ngay trong lòng bàn tay.",
+    img: "/ca2-web/ca2-pos.png",
+    bgColor: "from-emerald-900 via-[#0f172a] to-slate-900",
+    accent: "text-emerald-400",
+    button: "Tải app ngay"
   }
 ];
 
@@ -73,7 +83,7 @@ function HeroSlider() {
 
   return (
     <div className="relative h-full w-full overflow-hidden">
-      <AnimatePresence initial={false} custom={direction} mode="wait">
+      <AnimatePresence initial={false} custom={direction}>
         <motion.div
           key={current}
           custom={direction}
@@ -82,8 +92,8 @@ function HeroSlider() {
           animate="center"
           exit="exit"
           transition={{
-            x: { type: "spring", stiffness: 300, damping: 30 },
-            opacity: { duration: 0.5 }
+            x: { type: "tween", duration: 0.8, ease: [0.4, 0, 0.2, 1] },
+            opacity: { duration: 0.6 }
           }}
           className={`absolute inset-0 bg-gradient-to-br ${slides[current].bgColor} flex items-center`}
         >
