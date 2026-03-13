@@ -1,9 +1,56 @@
 "use client";
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Phone, Mail, Clock } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, CheckCircle2, AlertCircle } from 'lucide-react';
+import { supabase } from '@/lib/supabase';
 
 export default function LienHe() {
+  const [formData, setFormData] = useState({
+    full_name: '',
+    phone: '',
+    company_name: '',
+    service_type: '',
+    message: ''
+  });
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setStatus('idle');
+    setErrorMessage('');
+
+    const { error } = await supabase
+      .from('consultation_requests')
+      .insert([
+        {
+          full_name: formData.full_name,
+          phone: formData.phone,
+          company_name: formData.company_name,
+          service_type: formData.service_type,
+          message: formData.message,
+          status: 'pending'
+        }
+      ]);
+
+    setLoading(false);
+    if (error) {
+      console.error('Error submitting form:', error);
+      setStatus('error');
+      setErrorMessage(error.message || 'Lỗi không xác định từ máy chủ');
+    } else {
+      setStatus('success');
+      setFormData({
+        full_name: '',
+        phone: '',
+        company_name: '',
+        service_type: '',
+        message: ''
+      });
+    }
+  };
   return (
     <div className="pt-24 min-h-screen bg-slate-50">
       <div className="container mx-auto px-6 lg:px-12 py-16">
@@ -53,40 +100,98 @@ export default function LienHe() {
           {/* Form liên hệ */}
           <div className="p-12">
             <h3 className="text-2xl font-bold text-slate-800 mb-8">Gửi yêu cầu tư vấn</h3>
-            <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+            
+            {status === 'success' && (
+              <div className="mb-8 p-6 bg-green-50 border border-green-200 rounded-3xl flex items-start gap-4">
+                <CheckCircle2 className="text-green-500 shrink-0" size={24} />
+                <div>
+                  <h4 className="font-bold text-green-800 mb-1">Gửi yêu cầu thành công!</h4>
+                  <p className="text-green-700">Cảm ơn bạn đã quan tâm. Chuyên viên của CA2 sẽ liên hệ để tư vấn cho bạn trong thời gian sớm nhất.</p>
+                </div>
+              </div>
+            )}
+
+            {status === 'error' && (
+              <div className="mb-8 p-6 bg-red-50 border border-red-200 rounded-3xl flex items-start gap-4">
+                <AlertCircle className="text-red-500 shrink-0" size={24} />
+                <div>
+                  <h4 className="font-bold text-red-800 mb-1">Có lỗi xảy ra</h4>
+                  <p className="text-red-700">Không thể gửi yêu cầu lúc này. Vui lòng thử lại sau hoặc liên hệ Hotline.</p>
+                  {errorMessage && <p className="mt-2 text-sm text-red-600 opacity-80">Chi tiết: {errorMessage}</p>}
+                </div>
+              </div>
+            )}
+
+            <form className="space-y-6" onSubmit={handleSubmit}>
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-bold text-slate-900 mb-2">Họ và tên *</label>
-                  <input type="text" className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-slate-900 placeholder:text-slate-500 font-medium" placeholder="Nhập họ tên" required />
+                  <input 
+                    type="text" 
+                    required
+                    value={formData.full_name}
+                    onChange={(e) => setFormData({...formData, full_name: e.target.value})}
+                    className="w-full px-5 py-4 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all bg-white font-extrabold text-slate-900 placeholder:font-semibold placeholder:text-slate-400" 
+                    placeholder="Nhập họ tên" 
+                  />
                 </div>
                 <div>
                   <label className="block text-sm font-bold text-slate-900 mb-2">Số điện thoại *</label>
-                  <input type="tel" className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-slate-900 placeholder:text-slate-500 font-medium" placeholder="Nhập số điện thoại" required />
+                  <input 
+                    type="tel" 
+                    required
+                    value={formData.phone}
+                    onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                    className="w-full px-5 py-4 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all bg-white font-extrabold text-slate-900 placeholder:font-semibold placeholder:text-slate-400" 
+                    placeholder="Nhập số điện thoại" 
+                  />
                 </div>
               </div>
               
               <div>
                 <label className="block text-sm font-bold text-slate-900 mb-2">Tên doanh nghiệp</label>
-                <input type="text" className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-slate-900 placeholder:text-slate-500 font-medium" placeholder="Tên công ty / doanh nghiệp của bạn" />
+                <input 
+                  type="text" 
+                  value={formData.company_name}
+                  onChange={(e) => setFormData({...formData, company_name: e.target.value})}
+                  className="w-full px-5 py-4 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all bg-white font-extrabold text-slate-900 placeholder:font-semibold placeholder:text-slate-400" 
+                  placeholder="Tên công ty / doanh nghiệp của bạn" 
+                />
               </div>
 
               <div>
                 <label className="block text-sm font-bold text-slate-900 mb-2">Dịch vụ quan tâm</label>
-                <select className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-slate-900 font-medium">
-                  <option>-- Chọn dịch vụ --</option>
-                  <option>Hóa đơn điện tử</option>
-                  <option>Chữ ký số (CA)</option>
-                  <option>Bảo hiểm xã hội điện tử</option>
-                  <option>Khác</option>
+                <select 
+                  value={formData.service_type}
+                  onChange={(e) => setFormData({...formData, service_type: e.target.value})}
+                  className="w-full px-5 py-4 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all bg-white appearance-none font-extrabold text-slate-900"
+                >
+                  <option value="">-- Chọn dịch vụ --</option>
+                  <option value="Hóa đơn điện tử">Hóa đơn điện tử</option>
+                  <option value="Chữ ký số (CA)">Chữ ký số (CA)</option>
+                  <option value="Bảo hiểm xã hội điện tử">Bảo hiểm xã hội điện tử</option>
+                  <option value="Khác">Khác</option>
                 </select>
               </div>
 
               <div>
                 <label className="block text-sm font-bold text-slate-900 mb-2">Nội dung lời nhắn</label>
-                <textarea rows={4} className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all resize-none text-slate-900 placeholder:text-slate-500 font-medium" placeholder="Bạn cần chúng tôi tư vấn gì thêm?"></textarea>
+                <textarea 
+                  rows={4} 
+                  value={formData.message}
+                  onChange={(e) => setFormData({...formData, message: e.target.value})}
+                  className="w-full px-5 py-4 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all resize-none bg-white font-extrabold text-slate-900 placeholder:font-semibold placeholder:text-slate-400" 
+                  placeholder="Bạn cần chúng tôi tư vấn gì thêm?"
+                ></textarea>
               </div>
 
-              <button type="submit" className="w-full py-4 bg-[#ea580c] hover:bg-[#f97316] text-white font-bold rounded-xl shadow-lg transition-transform hover:-translate-y-1">Gửi thông tin ngay</button>
+              <button 
+                type="submit" 
+                disabled={loading}
+                className={`w-full py-4 text-white font-bold rounded-xl shadow-lg transition-all ${loading ? 'bg-slate-400 text-slate-100' : 'bg-[#ea580c] hover:bg-[#f97316] hover:-translate-y-1'}`}
+              >
+                {loading ? 'Đang gửi thông tin...' : 'Gửi thông tin ngay'}
+              </button>
             </form>
           </div>
         </div>
