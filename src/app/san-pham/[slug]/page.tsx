@@ -1,10 +1,18 @@
-"use client";
 import React from 'react';
-import { useParams } from 'next/navigation';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
 import { ArrowLeft, Check, Star, Zap, Shield, Globe, Smartphone, Clock, FileText, Calculator, HeartPulse, Inbox, KeyRound, UsbIcon } from 'lucide-react';
+
+const ALL_SLUGS = [
+  'ca2-einvoice', 'ca2-imv', 'ca2-accounting', 'ca2-pos',
+  'chung-tu-thue-tncn', 'ke-khai-bhxh', 'remote-signing',
+  'sign-platform', 'usb-token', 'ca2-hsm', 'ca2-ssl', 'ca2-tsa',
+];
+
+export function generateStaticParams() {
+  return ALL_SLUGS.map((slug) => ({ slug }));
+}
 
 const PRODUCTS: Record<string, {
   name: string;
@@ -294,9 +302,8 @@ const PRODUCTS: Record<string, {
   },
 };
 
-export default function ProductPage() {
-  const params = useParams();
-  const slug = params.slug as string;
+export default async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   const product = PRODUCTS[slug];
 
   if (!product) {
