@@ -13,6 +13,7 @@ const menuData = [
       { label: 'Ca2 Accounting', desc: 'Phần mềm kế toán thông minh', href: '/hoa-don-dien-tu', icon: Calculator, color: 'text-emerald-600 bg-emerald-100' },
       { label: 'Ca2 POS', desc: 'Quản lý bán hàng trên Mobile', href: '/hoa-don-dien-tu', icon: Smartphone, color: 'text-orange-600 bg-orange-100' },
       { label: 'Chứng từ thuế TNCN', desc: 'Khởi tạo, phát hành chứng từ điên tử', href: '/hoa-don-dien-tu', icon: FileText, color: 'text-rose-600 bg-rose-100' },
+      { label: 'Kê khai BHXH', desc: 'Kê khai bảo hiểm xã hội online', href: '/bao-hiem-xa-hoi', icon: HeartPulse, color: 'text-green-600 bg-green-100' },
     ],
   },
   {
@@ -25,14 +26,6 @@ const menuData = [
       { label: 'Ca2 HSM', desc: 'Chữ ký số chuyên dụng server', href: '/chu-ky-so', icon: Shield, color: 'text-red-600 bg-red-100' },
       { label: 'Ca2 SSL', desc: 'Chữ ký số bảo mật Website', href: '/chu-ky-so', icon: Globe, color: 'text-teal-600 bg-teal-100' },
       { label: 'Ca2 TSA', desc: 'Dịch vụ dấu thời gian', href: '/chu-ky-so', icon: Clock, color: 'text-amber-600 bg-amber-100' },
-    ],
-  },
-  {
-    label: 'BHXH điện tử',
-    href: '/bao-hiem-xa-hoi',
-    children: [
-      { label: 'Kê khai BHXH', desc: 'Kê khai bảo hiểm xã hội online', href: '/bao-hiem-xa-hoi', icon: HeartPulse, color: 'text-green-600 bg-green-100' },
-      { label: 'Ca2 CO-VAN', desc: 'Nhận truyền BHXH', href: '/bao-hiem-xa-hoi', icon: Users, color: 'text-orange-600 bg-orange-100' },
     ],
   },
   {
@@ -79,11 +72,59 @@ export default function Navbar() {
       setIsScrolled(window.scrollY > 10);
     };
     window.addEventListener('scroll', handleScroll);
+
+    // Tích hợp Google Translate System
+    let addScript = document.getElementById('google-translate-script') as HTMLScriptElement | null;
+    if (!addScript) {
+      addScript = document.createElement('script');
+      addScript.id = 'google-translate-script';
+      addScript.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+      addScript.async = true;
+      document.body.appendChild(addScript);
+      
+      // @ts-ignore
+      window.googleTranslateElementInit = () => {
+        // @ts-ignore
+        new window.google.translate.TranslateElement({
+          pageLanguage: 'vi',
+          includedLanguages: 'vi,en,zh-CN',
+          autoDisplay: false
+        }, 'google_translate_element');
+      };
+    }
+    
+    // Đọc Trạng thái Ngôn ngữ từ Cookie
+    const match = document.cookie.match(/googtrans=\/vi\/([a-zA-Z-]+)/);
+    if (match && match[1]) {
+      setLanguage(match[1]);
+    }
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const lang = e.target.value;
+    setLanguage(lang);
+    if (lang === 'vi') {
+      document.cookie = "googtrans=/vi/vi; path=/";
+      document.cookie = `googtrans=/vi/vi; path=/; domain=${window.location.hostname}`;
+    } else {
+      document.cookie = `googtrans=/vi/${lang}; path=/`;
+      document.cookie = `googtrans=/vi/${lang}; path=/; domain=${window.location.hostname}`;
+    }
+    window.location.reload(); // Reload để trigger Google Translate dịch toàn trang
+  };
+
   return (
     <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-[#0f172a]/95 backdrop-blur-lg shadow-xl py-3' : 'bg-[#0f172a] py-5'}`}>
+      <div id="google_translate_element" className="hidden"></div>
+      <style dangerouslySetInnerHTML={{__html: `
+        .goog-te-banner-frame { display: none !important; }
+        body { top: 0px !important; }
+        .goog-tooltip { display: none !important; }
+        .goog-tooltip:hover { display: none !important; }
+        .goog-text-highlight { background-color: transparent !important; border: none !important; box-shadow: none !important; }
+      `}} />
       <div className="container mx-auto px-6 lg:px-12 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 cursor-pointer group">
@@ -165,12 +206,12 @@ export default function Navbar() {
         <div className="hidden lg:flex items-center gap-3 shrink-0">
           <select 
             value={language}
-            onChange={(e) => setLanguage(e.target.value)}
+            onChange={handleLanguageChange}
             className={`bg-transparent text-[13px] xl:text-sm font-semibold outline-none cursor-pointer hover:opacity-80 transition-opacity ${isScrolled ? 'text-white' : 'text-white'}`}
           >
             <option value="vi" className="text-slate-900 border-none">🇻🇳 VN</option>
             <option value="en" className="text-slate-900">🇬🇧 EN</option>
-            <option value="zh" className="text-slate-900">🇨🇳 CN</option>
+            <option value="zh-CN" className="text-slate-900">🇨🇳 CN</option>
           </select>
           
           <div className="w-px h-5 bg-white/20"></div>
@@ -245,12 +286,12 @@ export default function Navbar() {
           <div className="flex gap-4 px-3 mb-2">
              <select 
                 value={language}
-                onChange={(e) => setLanguage(e.target.value)}
+                onChange={handleLanguageChange}
                 className="bg-transparent text-white font-medium outline-none cursor-pointer"
               >
                 <option value="vi" className="text-slate-900">Tiếng Việt</option>
                 <option value="en" className="text-slate-900">English</option>
-                <option value="zh" className="text-slate-900">中文 (Chinese)</option>
+                <option value="zh-CN" className="text-slate-900">中文 (Chinese)</option>
               </select>
           </div>
           <Link
