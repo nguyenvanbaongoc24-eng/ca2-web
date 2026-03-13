@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ChevronDown, FileText, Calculator, KeyRound, Smartphone, UsbIcon, Shield, Globe, Clock, HeartPulse, Users } from 'lucide-react';
+import { Menu, X, ChevronDown, FileText, Calculator, KeyRound, Smartphone, UsbIcon, Shield, Globe, Clock, HeartPulse, Users, Search } from 'lucide-react';
 import Link from 'next/link';
 
 const menuData = [
@@ -12,6 +12,7 @@ const menuData = [
       { label: 'Ca2 eInvoice', desc: 'Hóa đơn điện tử chuẩn TCT', href: '/hoa-don-dien-tu', icon: FileText, color: 'text-blue-600 bg-blue-100' },
       { label: 'Ca2 Accounting', desc: 'Phần mềm kế toán thông minh', href: '/hoa-don-dien-tu', icon: Calculator, color: 'text-emerald-600 bg-emerald-100' },
       { label: 'Ca2 POS', desc: 'Quản lý bán hàng trên Mobile', href: '/hoa-don-dien-tu', icon: Smartphone, color: 'text-orange-600 bg-orange-100' },
+      { label: 'Chứng từ thuế TNCN', desc: 'Khởi tạo, phát hành chứng từ điên tử', href: '/hoa-don-dien-tu', icon: FileText, color: 'text-rose-600 bg-rose-100' },
     ],
   },
   {
@@ -44,6 +45,15 @@ const menuData = [
     ],
   },
   {
+    label: 'Tiện ích',
+    href: '/ho-tro',
+    children: [
+      { label: 'Tính thuế TNCN', desc: 'Công cụ tính mức nộp thuế TNCN', href: 'https://www.meinvoice.vn/tien-ich/tinh-thue-thu-nhap-ca-nhan/#can-nop', icon: Calculator, color: 'text-green-600 bg-green-100' },
+      { label: 'Tính hoàn thuế TNCN', desc: 'Dự toán định mức hoàn thuế', href: 'https://www.meinvoice.vn/tien-ich/tinh-thue-thu-nhap-ca-nhan/#hoan-thue', icon: FileText, color: 'text-indigo-600 bg-indigo-100' },
+      { label: 'Tính thuế HKD', desc: 'Thuế khoán Hộ kinh doanh', href: 'https://www.misaeshop.vn/cong-cu-tinh-thue-hkd/', icon: Calculator, color: 'text-orange-600 bg-orange-100' },
+    ],
+  },
+  {
     label: 'Hỗ trợ',
     href: '/ho-tro',
     children: [
@@ -62,6 +72,7 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [mobileAccordion, setMobileAccordion] = useState<string | null>(null);
+  const [language, setLanguage] = useState('vi');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -150,10 +161,25 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* Buttons */}
-        <div className="hidden lg:flex items-center gap-3">
-          <button className="text-white text-sm font-semibold hover:text-orange-300 transition whitespace-nowrap">Đăng nhập</button>
-          <Link href="/lien-he" className="px-4 py-2 rounded-full bg-[#f97316] text-sm text-white font-semibold hover:bg-orange-400 hover:shadow-lg hover:scale-105 transition-all duration-300 whitespace-nowrap">
+        {/* Right Actions & Buttons */}
+        <div className="hidden lg:flex items-center gap-4">
+          <select 
+            value={language}
+            onChange={(e) => setLanguage(e.target.value)}
+            className={`bg-transparent text-sm font-semibold outline-none cursor-pointer hover:opacity-80 transition-opacity ${isScrolled ? 'text-white' : 'text-white'}`}
+          >
+            <option value="vi" className="text-slate-900 border-none">🇻🇳 VN</option>
+            <option value="en" className="text-slate-900">🇬🇧 EN</option>
+            <option value="zh" className="text-slate-900">🇨🇳 CN</option>
+          </select>
+          
+          <div className="w-px h-5 bg-white/20"></div>
+          
+          <button className="text-white hover:text-orange-300 transition-colors">
+            <Search size={20} strokeWidth={2.5} />
+          </button>
+          
+          <Link href="/lien-he" className="ml-2 px-5 py-2.5 rounded-full bg-[#f97316] text-sm text-white font-bold hover:bg-orange-400 hover:shadow-lg hover:shadow-orange-500/30 hover:-translate-y-0.5 transition-all duration-300 whitespace-nowrap">
             Đăng ký tư vấn
           </Link>
         </div>
@@ -216,7 +242,17 @@ export default function Navbar() {
           ))}
 
           <div className="h-px bg-white/10 my-3"></div>
-          <button className="font-semibold text-left text-white py-2 px-3">Đăng nhập</button>
+          <div className="flex gap-4 px-3 mb-2">
+             <select 
+                value={language}
+                onChange={(e) => setLanguage(e.target.value)}
+                className="bg-transparent text-white font-medium outline-none cursor-pointer"
+              >
+                <option value="vi" className="text-slate-900">Tiếng Việt</option>
+                <option value="en" className="text-slate-900">English</option>
+                <option value="zh" className="text-slate-900">中文 (Chinese)</option>
+              </select>
+          </div>
           <Link
             href="/lien-he"
             className="block px-5 py-3 rounded-full bg-[#f97316] text-white font-semibold text-center mt-2 hover:bg-orange-400 transition-colors"
