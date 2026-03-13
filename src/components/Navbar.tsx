@@ -82,7 +82,7 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Links */}
-        <nav className="hidden lg:flex items-center gap-1">
+        <nav className="hidden xl:flex items-center gap-0.5">
           {menuData.map((item) => (
             <div
               key={item.label}
@@ -92,10 +92,10 @@ export default function Navbar() {
             >
               <Link
                 href={item.href}
-                className={`flex items-center gap-1 px-4 py-2 rounded-lg text-slate-200 font-medium hover:text-white hover:bg-white/10 transition-all duration-200 ${openDropdown === item.label ? 'text-white bg-white/10' : ''}`}
+                className={`flex items-center gap-1 px-2.5 py-2 rounded-lg text-slate-200 text-sm font-medium hover:text-white hover:bg-white/10 transition-all duration-200 ${openDropdown === item.label ? 'text-white bg-white/10' : ''} whitespace-nowrap`}
               >
                 {item.label}
-                {item.children && <ChevronDown size={16} className={`transition-transform duration-200 ${openDropdown === item.label ? 'rotate-180' : ''}`} />}
+                {item.children && <ChevronDown size={14} className={`transition-transform duration-200 ${openDropdown === item.label ? 'rotate-180' : ''}`} />}
               </Link>
 
               {/* Dropdown */}
@@ -129,10 +129,30 @@ export default function Navbar() {
           ))}
         </nav>
 
+        {/* Desktop Links (Large screens but not XL) - Fallback for slightly smaller screens */}
+        <nav className="hidden lg:flex xl:hidden items-center gap-0">
+          {menuData.map((item) => (
+            <div
+              key={item.label}
+              className="relative"
+              onMouseEnter={() => item.children && setOpenDropdown(item.label)}
+              onMouseLeave={() => setOpenDropdown(null)}
+            >
+              <Link
+                href={item.href}
+                className={`flex items-center gap-1 px-2 py-2 rounded-lg text-slate-200 text-[13px] font-medium hover:text-white hover:bg-white/10 transition-all duration-200 ${openDropdown === item.label ? 'text-white bg-white/10' : ''} whitespace-nowrap`}
+              >
+                {item.label}
+                {item.children && <ChevronDown size={12} className={`transition-transform duration-200 ${openDropdown === item.label ? 'rotate-180' : ''}`} />}
+              </Link>
+            </div>
+          ))}
+        </nav>
+
         {/* Buttons */}
-        <div className="hidden lg:flex items-center gap-4">
-          <button className="text-white font-semibold hover:text-orange-300 transition">Đăng nhập</button>
-          <Link href="/lien-he" className="px-5 py-2.5 rounded-full bg-[#f97316] text-white font-semibold hover:bg-orange-400 hover:shadow-lg hover:scale-105 transition-all duration-300">
+        <div className="hidden lg:flex items-center gap-3">
+          <button className="text-white text-sm font-semibold hover:text-orange-300 transition whitespace-nowrap">Đăng nhập</button>
+          <Link href="/lien-he" className="px-4 py-2 rounded-full bg-[#f97316] text-sm text-white font-semibold hover:bg-orange-400 hover:shadow-lg hover:scale-105 transition-all duration-300 whitespace-nowrap">
             Đăng ký tư vấn
           </Link>
         </div>
