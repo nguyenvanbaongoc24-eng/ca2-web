@@ -39,11 +39,11 @@ const menuData = [
   },
   {
     label: 'Tiện ích',
-    href: '/ho-tro',
+    href: '/tien-ich',
     children: [
-      { label: 'Tính thuế TNCN', desc: 'Công cụ tính mức nộp thuế TNCN', href: 'https://www.meinvoice.vn/tien-ich/tinh-thue-thu-nhap-ca-nhan/#can-nop', icon: Calculator, color: 'text-green-600 bg-green-100' },
-      { label: 'Tính hoàn thuế TNCN', desc: 'Dự toán định mức hoàn thuế', href: 'https://www.meinvoice.vn/tien-ich/tinh-thue-thu-nhap-ca-nhan/#hoan-thue', icon: FileText, color: 'text-indigo-600 bg-indigo-100' },
-      { label: 'Tính thuế HKD', desc: 'Thuế khoán Hộ kinh doanh', href: 'https://www.misaeshop.vn/cong-cu-tinh-thue-hkd/', icon: Calculator, color: 'text-orange-600 bg-orange-100' },
+      { label: 'Tính thuế TNCN', desc: 'Công cụ tính mức nộp thuế TNCN', href: '/tien-ich/tinh-thue-tncn', icon: Calculator, color: 'text-green-600 bg-green-100' },
+      { label: 'Tính hoàn thuế TNCN', desc: 'Dự toán định mức hoàn thuế', href: '/tien-ich/tinh-hoan-thue-tncn', icon: FileText, color: 'text-indigo-600 bg-indigo-100' },
+      { label: 'Tính thuế HKD', desc: 'Thuế khoán Hộ kinh doanh', href: '/tien-ich/tinh-thue-hkd', icon: Calculator, color: 'text-orange-600 bg-orange-100' },
     ],
   },
   {
