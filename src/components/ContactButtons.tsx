@@ -20,7 +20,8 @@ const ContactButtons = () => {
       color: 'bg-[#ff8a00]',
       hoverColor: 'hover:bg-[#e67c00]',
       link: '/lien-he',
-      pulse: true
+      pulse: true,
+      shadow: ""
     },
     {
       id: 'hotline',
@@ -29,7 +30,8 @@ const ContactButtons = () => {
       color: 'bg-[#1877f2]',
       hoverColor: 'hover:bg-[#166fe5]',
       link: 'tel:0356230550',
-      pulse: true
+      pulse: true,
+      shadow: ""
     },
     {
       id: 'messenger',
@@ -42,7 +44,8 @@ const ContactButtons = () => {
       color: 'bg-gradient-to-br from-[#00b2ff] via-[#006aff] to-[#7101fa] via-[#a033ff] to-[#ff5ad1]',
       hoverColor: 'hover:brightness-110',
       link: 'https://m.me/ca2.digital',
-      external: true
+      external: true,
+      shadow: ""
     },
     {
       id: 'zalo',
