@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ChevronDown, FileText, Calculator, KeyRound, Smartphone, UsbIcon, Shield, Globe, Clock, HeartPulse, Users, Search } from 'lucide-react';
+import { Menu, X, ChevronDown, FileText, Calculator, KeyRound, Smartphone, UsbIcon, Shield, Globe, Clock, HeartPulse, Search, DollarSign, Inbox } from 'lucide-react';
 import Link from 'next/link';
 
 const menuData = [
@@ -9,23 +9,33 @@ const menuData = [
     label: 'Hóa đơn điện tử',
     href: '/hoa-don-dien-tu',
     children: [
-      { label: 'Ca2 eInvoice', desc: 'Hóa đơn điện tử chuẩn TCT', href: '/hoa-don-dien-tu', icon: FileText, color: 'text-blue-600 bg-blue-100' },
-      { label: 'Ca2 Accounting', desc: 'Phần mềm kế toán thông minh', href: '/hoa-don-dien-tu', icon: Calculator, color: 'text-emerald-600 bg-emerald-100' },
-      { label: 'Ca2 POS', desc: 'Quản lý bán hàng trên Mobile', href: '/hoa-don-dien-tu', icon: Smartphone, color: 'text-orange-600 bg-orange-100' },
-      { label: 'Chứng từ thuế TNCN', desc: 'Khởi tạo, phát hành chứng từ điên tử', href: '/hoa-don-dien-tu', icon: FileText, color: 'text-rose-600 bg-rose-100' },
-      { label: 'Kê khai BHXH', desc: 'Kê khai bảo hiểm xã hội online', href: '/bao-hiem-xa-hoi', icon: HeartPulse, color: 'text-green-600 bg-green-100' },
+      { label: 'Ca2 eInvoice', desc: 'Hóa đơn điện tử chuẩn TCT', href: '/san-pham/ca2-einvoice', icon: FileText, color: 'text-blue-600 bg-blue-100' },
+      { label: 'Ca2 IMV', desc: 'Hóa đơn đầu vào thông minh', href: '/san-pham/ca2-imv', icon: Inbox, color: 'text-violet-600 bg-violet-100' },
+      { label: 'Ca2 Accounting', desc: 'Phần mềm kế toán thông minh', href: '/san-pham/ca2-accounting', icon: Calculator, color: 'text-emerald-600 bg-emerald-100' },
+      { label: 'Ca2 POS', desc: 'Quản lý bán hàng trên Mobile', href: '/san-pham/ca2-pos', icon: Smartphone, color: 'text-orange-600 bg-orange-100' },
+      { label: 'Chứng từ thuế TNCN', desc: 'Khởi tạo, phát hành chứng từ điện tử', href: '/san-pham/chung-tu-thue-tncn', icon: FileText, color: 'text-rose-600 bg-rose-100' },
+      { label: 'Kê khai BHXH', desc: 'Kê khai bảo hiểm xã hội online', href: '/san-pham/ke-khai-bhxh', icon: HeartPulse, color: 'text-green-600 bg-green-100' },
     ],
   },
   {
     label: 'Chữ ký số',
     href: '/chu-ky-so',
     children: [
-      { label: 'Remote Signing', desc: 'Chữ ký số từ xa, ký mọi nơi', href: '/chu-ky-so', icon: Smartphone, color: 'text-purple-600 bg-purple-100' },
-      { label: 'Sign Platform', desc: 'Nền tảng ký số tích hợp', href: '/chu-ky-so', icon: KeyRound, color: 'text-indigo-600 bg-indigo-100' },
-      { label: 'USB Token', desc: 'Chữ ký số phần cứng phổ biến', href: '/chu-ky-so', icon: UsbIcon, color: 'text-sky-600 bg-sky-100' },
-      { label: 'Ca2 HSM', desc: 'Chữ ký số chuyên dụng server', href: '/chu-ky-so', icon: Shield, color: 'text-red-600 bg-red-100' },
-      { label: 'Ca2 SSL', desc: 'Chữ ký số bảo mật Website', href: '/chu-ky-so', icon: Globe, color: 'text-teal-600 bg-teal-100' },
-      { label: 'Ca2 TSA', desc: 'Dịch vụ dấu thời gian', href: '/chu-ky-so', icon: Clock, color: 'text-amber-600 bg-amber-100' },
+      { label: 'Remote Signing', desc: 'Chữ ký số từ xa, ký mọi nơi', href: '/san-pham/remote-signing', icon: Smartphone, color: 'text-purple-600 bg-purple-100' },
+      { label: 'Sign Platform', desc: 'Nền tảng ký số tích hợp', href: '/san-pham/sign-platform', icon: KeyRound, color: 'text-indigo-600 bg-indigo-100' },
+      { label: 'USB Token', desc: 'Chữ ký số phần cứng phổ biến', href: '/san-pham/usb-token', icon: UsbIcon, color: 'text-sky-600 bg-sky-100' },
+      { label: 'Ca2 HSM', desc: 'Chữ ký số chuyên dụng server', href: '/san-pham/ca2-hsm', icon: Shield, color: 'text-red-600 bg-red-100' },
+      { label: 'Ca2 SSL', desc: 'Chữ ký số bảo mật Website', href: '/san-pham/ca2-ssl', icon: Globe, color: 'text-teal-600 bg-teal-100' },
+      { label: 'Ca2 TSA', desc: 'Dịch vụ dấu thời gian', href: '/san-pham/ca2-tsa', icon: Clock, color: 'text-amber-600 bg-amber-100' },
+    ],
+  },
+  {
+    label: 'Báo giá',
+    href: '/bao-gia',
+    children: [
+      { label: 'Hóa đơn điện tử', desc: 'Bảng giá gói Ca2 eInvoice', href: '/bao-gia#hoa-don', icon: FileText, color: 'text-blue-600 bg-blue-100' },
+      { label: 'Chữ ký số', desc: 'Bảng giá các loại chữ ký số', href: '/bao-gia#chu-ky-so', icon: KeyRound, color: 'text-purple-600 bg-purple-100' },
+      { label: 'Phần mềm kế toán', desc: 'Bảng giá Ca2 Accounting', href: '/bao-gia#ke-toan', icon: Calculator, color: 'text-emerald-600 bg-emerald-100' },
     ],
   },
   {
@@ -117,13 +127,17 @@ export default function Navbar() {
 
   return (
     <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-[#0f172a]/95 backdrop-blur-lg shadow-xl py-3' : 'bg-[#0f172a] py-5'}`}>
-      <div id="google_translate_element" className="hidden"></div>
+      <div id="google_translate_element" style={{display:'none',height:0,overflow:'hidden'}}></div>
       <style dangerouslySetInnerHTML={{__html: `
         .goog-te-banner-frame { display: none !important; }
-        body { top: 0px !important; }
+        body { top: 0px !important; position: static !important; }
+        .skiptranslate { display: none !important; height: 0 !important; }
+        iframe.skiptranslate { display: none !important; }
+        .goog-te-gadget { display: none !important; }
         .goog-tooltip { display: none !important; }
         .goog-tooltip:hover { display: none !important; }
         .goog-text-highlight { background-color: transparent !important; border: none !important; box-shadow: none !important; }
+        #goog-gt-tt { display: none !important; }
       `}} />
       <div className="container mx-auto px-6 lg:px-12 flex items-center justify-between">
         {/* Logo */}
@@ -204,15 +218,28 @@ export default function Navbar() {
 
         {/* Right Actions & Buttons */}
         <div className="hidden lg:flex items-center gap-3 shrink-0">
-          <select 
-            value={language}
-            onChange={handleLanguageChange}
-            className={`bg-transparent text-[13px] xl:text-sm font-semibold outline-none cursor-pointer hover:opacity-80 transition-opacity ${isScrolled ? 'text-white' : 'text-white'}`}
-          >
-            <option value="vi" className="text-slate-900 border-none">🇻🇳 VN</option>
-            <option value="en" className="text-slate-900">🇬🇧 EN</option>
-            <option value="zh-CN" className="text-slate-900">🇨🇳 CN</option>
-          </select>
+          <div className="flex items-center gap-1">
+            {[
+              { code: 'vi', flag: '🇻🇳', label: 'VN' },
+              { code: 'en', flag: '🇬🇧', label: 'EN' },
+              { code: 'zh-CN', flag: '🇨🇳', label: 'CN' },
+            ].map((lang) => (
+              <button
+                key={lang.code}
+                onClick={() => {
+                  const syntheticEvent = { target: { value: lang.code } } as React.ChangeEvent<HTMLSelectElement>;
+                  handleLanguageChange(syntheticEvent);
+                }}
+                className={`px-2 py-1 rounded-md text-xs font-semibold transition-all ${
+                  language === lang.code
+                    ? 'bg-orange-500 text-white'
+                    : 'text-slate-300 hover:text-white hover:bg-white/10'
+                }`}
+              >
+                {lang.flag} {lang.label}
+              </button>
+            ))}
+          </div>
           
           <div className="w-px h-5 bg-white/20"></div>
           
@@ -220,7 +247,10 @@ export default function Navbar() {
             <Search size={18} strokeWidth={2.5} className="xl:h-5 xl:w-5" />
           </button>
           
-          <Link href="/lien-he" className="ml-1 xl:ml-2 px-4 xl:px-5 py-2 xl:py-2.5 rounded-full bg-[#f97316] text-[13px] xl:text-sm text-white font-bold hover:bg-orange-400 hover:shadow-lg hover:shadow-orange-500/30 hover:-translate-y-0.5 transition-all duration-300 whitespace-nowrap">
+          <Link href="/bao-gia" className="ml-1 px-4 xl:px-5 py-2 xl:py-2.5 rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 text-[13px] xl:text-sm text-white font-bold hover:shadow-lg hover:shadow-emerald-500/30 hover:-translate-y-0.5 transition-all duration-300 whitespace-nowrap">
+            Báo giá
+          </Link>
+          <Link href="/lien-he" className="px-4 xl:px-5 py-2 xl:py-2.5 rounded-full bg-[#f97316] text-[13px] xl:text-sm text-white font-bold hover:bg-orange-400 hover:shadow-lg hover:shadow-orange-500/30 hover:-translate-y-0.5 transition-all duration-300 whitespace-nowrap">
             Đăng ký tư vấn
           </Link>
         </div>
@@ -283,16 +313,27 @@ export default function Navbar() {
           ))}
 
           <div className="h-px bg-white/10 my-3"></div>
-          <div className="flex gap-4 px-3 mb-2">
-             <select 
-                value={language}
-                onChange={handleLanguageChange}
-                className="bg-transparent text-white font-medium outline-none cursor-pointer"
+          <div className="flex gap-2 px-3 mb-2">
+            {[
+              { code: 'vi', label: 'Tiếng Việt' },
+              { code: 'en', label: 'English' },
+              { code: 'zh-CN', label: '中文' },
+            ].map((lang) => (
+              <button
+                key={lang.code}
+                onClick={() => {
+                  const syntheticEvent = { target: { value: lang.code } } as React.ChangeEvent<HTMLSelectElement>;
+                  handleLanguageChange(syntheticEvent);
+                }}
+                className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${
+                  language === lang.code
+                    ? 'bg-orange-500 text-white'
+                    : 'text-slate-300 hover:text-white hover:bg-white/10'
+                }`}
               >
-                <option value="vi" className="text-slate-900">Tiếng Việt</option>
-                <option value="en" className="text-slate-900">English</option>
-                <option value="zh-CN" className="text-slate-900">中文 (Chinese)</option>
-              </select>
+                {lang.label}
+              </button>
+            ))}
           </div>
           <Link
             href="/lien-he"
