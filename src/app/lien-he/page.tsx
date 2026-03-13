@@ -56,23 +56,23 @@ export default function LienHe() {
             <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-semibold text-slate-700 mb-2">Họ và tên *</label>
-                  <input type="text" className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all" placeholder="Nhập họ tên" required />
+                  <label className="block text-sm font-bold text-slate-900 mb-2">Họ và tên *</label>
+                  <input type="text" className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-slate-900 placeholder:text-slate-500 font-medium" placeholder="Nhập họ tên" required />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-slate-700 mb-2">Số điện thoại *</label>
-                  <input type="tel" className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all" placeholder="Nhập số điện thoại" required />
+                  <label className="block text-sm font-bold text-slate-900 mb-2">Số điện thoại *</label>
+                  <input type="tel" className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-slate-900 placeholder:text-slate-500 font-medium" placeholder="Nhập số điện thoại" required />
                 </div>
               </div>
               
               <div>
-                <label className="block text-sm font-semibold text-slate-700 mb-2">Tên doanh nghiệp</label>
-                <input type="text" className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all" placeholder="Tên công ty / doanh nghiệp của bạn" />
+                <label className="block text-sm font-bold text-slate-900 mb-2">Tên doanh nghiệp</label>
+                <input type="text" className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-slate-900 placeholder:text-slate-500 font-medium" placeholder="Tên công ty / doanh nghiệp của bạn" />
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-slate-700 mb-2">Dịch vụ quan tâm</label>
-                <select className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-slate-700">
+                <label className="block text-sm font-bold text-slate-900 mb-2">Dịch vụ quan tâm</label>
+                <select className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-slate-900 font-medium">
                   <option>-- Chọn dịch vụ --</option>
                   <option>Hóa đơn điện tử</option>
                   <option>Chữ ký số (CA)</option>
@@ -82,8 +82,8 @@ export default function LienHe() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-slate-700 mb-2">Nội dung lời nhắn</label>
-                <textarea rows={4} className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all resize-none" placeholder="Bạn cần chúng tôi tư vấn gì thêm?"></textarea>
+                <label className="block text-sm font-bold text-slate-900 mb-2">Nội dung lời nhắn</label>
+                <textarea rows={4} className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all resize-none text-slate-900 placeholder:text-slate-500 font-medium" placeholder="Bạn cần chúng tôi tư vấn gì thêm?"></textarea>
               </div>
 
               <button type="submit" className="w-full py-4 bg-[#ea580c] hover:bg-[#f97316] text-white font-bold rounded-xl shadow-lg transition-transform hover:-translate-y-1">Gửi thông tin ngay</button>
