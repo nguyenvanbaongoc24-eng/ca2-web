@@ -1,48 +1,200 @@
 "use client";
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FileText, Edit3, ShieldCheck, CheckCircle, ArrowRight } from 'lucide-react';
+import { FileText, Edit3, ShieldCheck, CheckCircle, ArrowRight, ChevronLeft, ChevronRight, Star } from 'lucide-react';
+import { AnimatePresence } from 'framer-motion';
+
+const slides = [
+  {
+    id: 1,
+    title: "Giải pháp Chuyển đổi số toàn diện",
+    highlight: "Sáng tạo & Đột phá",
+    desc: "Tối ưu hóa quy trình vận hành với hệ sinh thái thông minh của Ca2.Digital. Đồng hành cùng hơn 10,000 doanh nghiệp Việt vươn tầm thế giới.",
+    img: "/ca2-web/ca2-sansang.webp",
+    bgColor: "from-blue-900 via-[#0f172a] to-slate-900",
+    accent: "text-blue-400",
+    button: "Khám phá ngay"
+  },
+  {
+    id: 2,
+    title: "Chữ Ký Số Ca2 - Ký số mọi lúc mọi nơi",
+    highlight: "An toàn & Bảo mật",
+    desc: "Trải nghiệm giải pháp Remote Signing và Sign Platform tiên tiến nhất. Ký kết hợp đồng, khai thuế chỉ trong tích tắc với độ pháp lý tuyệt đối.",
+    img: "/ca2-web/ca2-remote-signing.png",
+    bgColor: "from-purple-900 via-[#0f172a] to-slate-900",
+    accent: "text-purple-400",
+    button: "Đăng ký CKS"
+  },
+  {
+    id: 3,
+    title: "Hóa Đơn Điện Tử Chuẩn Tổng Cục Thuế",
+    highlight: "Minh bạch & Thông minh",
+    desc: "Hệ thống Ca2 eInvoice chịu tải cao, phát hành hàng triệu hóa đơn không gián đoạn. Tích hợp sẵn với mọi phần mềm kế toán phổ biến.",
+    img: "/ca2-web/ca2-einvoice-banner.png",
+    bgColor: "from-orange-900 via-[#0f172a] to-slate-900",
+    accent: "text-orange-400",
+    button: "Dùng thử miễn phí"
+  }
+];
+
+function HeroSlider() {
+  const [current, setCurrent] = React.useState(0);
+  const [direction, setDirection] = React.useState(0); // 1 for right, -1 for left
+
+  const nextSlide = () => {
+    setDirection(1);
+    setCurrent((prev) => (prev + 1) % slides.length);
+  };
+
+  const prevSlide = () => {
+    setDirection(-1);
+    setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
+  };
+
+  React.useEffect(() => {
+    const timer = setInterval(nextSlide, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const variants = {
+    enter: (direction: number) => ({
+      x: direction > 0 ? '100%' : '-100%',
+      opacity: 0
+    }),
+    center: {
+      x: 0,
+      opacity: 1
+    },
+    exit: (direction: number) => ({
+      x: direction < 0 ? '100%' : '-100%',
+      opacity: 0
+    })
+  };
+
+  return (
+    <div className="relative h-full w-full overflow-hidden">
+      <AnimatePresence initial={false} custom={direction} mode="wait">
+        <motion.div
+          key={current}
+          custom={direction}
+          variants={variants}
+          initial="enter"
+          animate="center"
+          exit="exit"
+          transition={{
+            x: { type: "spring", stiffness: 300, damping: 30 },
+            opacity: { duration: 0.5 }
+          }}
+          className={`absolute inset-0 bg-gradient-to-br ${slides[current].bgColor} flex items-center`}
+        >
+          <div className="container mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-12 items-center py-20">
+            <div className="z-10">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm font-semibold mb-6"
+              >
+                <Star size={14} className="fill-yellow-400 text-yellow-400" />
+                <span>{slides[current].highlight}</span>
+              </motion.div>
+              
+              <motion.h1
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3, duration: 0.8 }}
+                className="text-4xl lg:text-6xl font-extrabold text-white leading-tight mb-6"
+              >
+                {slides[current].title.split(' - ').map((part, i) => (
+                  <span key={i}>
+                    {i > 0 && <br className="hidden lg:block"/>}
+                    {part}
+                  </span>
+                ))}
+              </motion.h1>
+
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+                className="text-lg text-slate-300 mb-8 leading-relaxed max-w-xl"
+              >
+                {slides[current].desc}
+              </motion.p>
+              
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+                className="flex flex-wrap gap-4"
+              >
+                <button className="px-8 py-4 rounded-full bg-[#f97316] text-white font-bold hover:bg-orange-600 hover:shadow-2xl hover:scale-105 transition-all duration-300">
+                  {slides[current].button}
+                </button>
+                <button className="px-8 py-4 rounded-full bg-white/10 text-white font-bold border border-white/20 hover:bg-white/20 transition-all duration-300">
+                  Xem chi tiết
+                </button>
+              </motion.div>
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8, x: 50 }}
+              animate={{ opacity: 1, scale: 1, x: 0 }}
+              transition={{ delay: 0.3, duration: 1, type: "spring" }}
+              className="relative hidden lg:block"
+            >
+              <div className="absolute inset-0 bg-blue-500/20 blur-3xl rounded-full scale-125 opacity-30"></div>
+              <div className="relative p-4 bg-white/5 backdrop-blur-sm rounded-[32px] border border-white/10 shadow-2xl overflow-hidden hover:scale-[1.02] transition-transform duration-500 group">
+                <img
+                  src={slides[current].img}
+                  alt={slides[current].title}
+                  className="w-full h-auto rounded-2xl shadow-xl transition-transform duration-700 group-hover:scale-110"
+                />
+              </div>
+            </motion.div>
+          </div>
+        </motion.div>
+      </AnimatePresence>
+
+      {/* Navigation Arrows */}
+      <div className="absolute inset-0 flex items-center justify-between px-6 pointer-events-none">
+        <button
+          onClick={prevSlide}
+          className="p-4 rounded-full bg-black/20 text-white backdrop-blur-md border border-white/10 hover:bg-[#f97316] hover:scale-110 transition-all duration-300 pointer-events-auto"
+        >
+          <ChevronLeft size={32} />
+        </button>
+        <button
+          onClick={nextSlide}
+          className="p-4 rounded-full bg-black/20 text-white backdrop-blur-md border border-white/10 hover:bg-[#f97316] hover:scale-110 transition-all duration-300 pointer-events-auto"
+        >
+          <ChevronRight size={32} />
+        </button>
+      </div>
+
+      {/* Slide Indicators (Dots) */}
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-3">
+        {slides.map((_, idx) => (
+          <button
+            key={idx}
+            onClick={() => {
+              setDirection(idx > current ? 1 : -1);
+              setCurrent(idx);
+            }}
+            className={`h-2 transition-all duration-500 rounded-full ${idx === current ? 'w-10 bg-[#f97316]' : 'w-2 bg-white/30 hover:bg-white/50'}`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default function Home() {
   return (
     <>
-      {/* 1. HERO SECTION */}
-      <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 bg-[var(--background-image-gradient-hero)] overflow-hidden">
-        <div className="container mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-12 items-center">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }} 
-            animate={{ opacity: 1, y: 0 }} 
-            transition={{ duration: 0.8 }}
-          >
-            <h1 className="text-4xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
-              Giải pháp <span className="text-[#ea580c]">Chuyển đổi số</span> toàn diện<br className="hidden lg:block"/> cho Doanh nghiệp
-            </h1>
-            <p className="text-lg text-indigo-100 mb-8 leading-relaxed">
-              Tối ưu hóa quy trình vận hành với hệ sinh thái thông minh: Hóa đơn điện tử, Chữ ký số và Bảo hiểm xã hội điện tử đáp ứng chuẩn pháp lý mới nhất.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <button className="px-8 py-4 rounded-full bg-[#172554] text-white font-semibold hover:bg-[#1e3a8a] hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                Bắt đầu ngay
-              </button>
-              <button className="px-8 py-4 rounded-full bg-white text-[#172554] font-semibold border border-slate-200 hover:border-[#172554] hover:shadow-lg transition-all duration-300">
-                Tìm hiểu thêm
-              </button>
-            </div>
-          </motion.div>
-          
-          <motion.div 
-            initial={{ opacity: 0, x: 50 }} 
-            animate={{ opacity: 1, x: 0 }} 
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative"
-          >
-            <img 
-              src="/ca2-web/hero-homepage.png" 
-              alt="Giải pháp chuyển đổi số toàn diện cho doanh nghiệp" 
-              className="w-full rounded-2xl shadow-2xl"
-            />
-          </motion.div>
-        </div>
+      {/* 1. HERO SLIDER SECTION */}
+      <section className="relative h-screen min-h-[700px] w-full overflow-hidden bg-[#0f172a]">
+        <HeroSlider />
       </section>
 
       {/* 2. SERVICES SECTION */}
