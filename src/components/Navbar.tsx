@@ -4,9 +4,8 @@ import { Menu, X, ChevronDown, FileText, Calculator, KeyRound, Smartphone, UsbIc
 import Link from 'next/link';
 
 const menuData = [
-  { label: 'Trang chủ', href: '/' },
   {
-    label: 'Hóa đơn điện tử',
+    label: 'Sản phẩm',
     href: '/hoa-don-dien-tu',
     children: [
       { label: 'Ca2 eInvoice', desc: 'Hóa đơn điện tử chuẩn TCT', href: '/san-pham/ca2-einvoice', icon: FileText, color: 'text-blue-600 bg-blue-100' },
@@ -218,27 +217,48 @@ export default function Navbar() {
 
         {/* Right Actions & Buttons */}
         <div className="hidden lg:flex items-center gap-3 shrink-0">
-          <div className="flex items-center gap-1">
-            {[
-              { code: 'vi', flag: '🇻🇳', label: 'VN' },
-              { code: 'en', flag: '🇬🇧', label: 'EN' },
-              { code: 'zh-CN', flag: '🇨🇳', label: 'CN' },
-            ].map((lang) => (
-              <button
-                key={lang.code}
-                onClick={() => {
-                  const syntheticEvent = { target: { value: lang.code } } as React.ChangeEvent<HTMLSelectElement>;
-                  handleLanguageChange(syntheticEvent);
-                }}
-                className={`px-2 py-1 rounded-md text-xs font-semibold transition-all ${
-                  language === lang.code
-                    ? 'bg-orange-500 text-white'
-                    : 'text-slate-300 hover:text-white hover:bg-white/10'
-                }`}
-              >
-                {lang.flag} {lang.label}
-              </button>
-            ))}
+          {/* Language Dropdown */}
+          <div 
+            className="relative"
+            onMouseEnter={() => setOpenDropdown('language')}
+            onMouseLeave={() => setOpenDropdown(null)}
+          >
+            <button
+              className="flex items-center gap-2 px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-white/10 transition-all duration-200"
+            >
+              <Globe size={18} className="text-[#f97316]" />
+              <span className="text-xs font-bold uppercase">{language === 'zh-CN' ? 'CN' : language.toUpperCase()}</span>
+              <ChevronDown size={14} className={`transition-transform duration-200 ${openDropdown === 'language' ? 'rotate-180' : ''}`} />
+            </button>
+
+            {/* Language Dropdown Menu */}
+            {openDropdown === 'language' && (
+              <div className="absolute top-full right-0 pt-3 z-50">
+                <div className="bg-white rounded-xl shadow-2xl border border-slate-100 p-2 w-36 flex flex-col gap-1">
+                  {[
+                    { code: 'vi', flag: '🇻🇳', label: 'Tiếng Việt' },
+                    { code: 'en', flag: '🇬🇧', label: 'English' },
+                    { code: 'zh-CN', flag: '🇨🇳', label: '中文' },
+                  ].map((lang) => (
+                    <button
+                      key={lang.code}
+                      onClick={() => {
+                        const syntheticEvent = { target: { value: lang.code } } as React.ChangeEvent<HTMLSelectElement>;
+                        handleLanguageChange(syntheticEvent);
+                      }}
+                      className={`flex items-center gap-3 w-full p-2.5 rounded-lg text-sm transition-colors ${
+                        language === lang.code 
+                          ? 'bg-orange-50 text-orange-600 font-bold' 
+                          : 'text-slate-600 hover:bg-slate-50'
+                      }`}
+                    >
+                      <span className="text-base">{lang.flag}</span>
+                      <span>{lang.label}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
           
           <div className="w-px h-5 bg-white/20"></div>
@@ -247,11 +267,8 @@ export default function Navbar() {
             <Search size={18} strokeWidth={2.5} className="xl:h-5 xl:w-5" />
           </button>
           
-          <Link href="/bao-gia" className="ml-1 px-4 xl:px-5 py-2 xl:py-2.5 rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 text-[13px] xl:text-sm text-white font-bold hover:shadow-lg hover:shadow-emerald-500/30 hover:-translate-y-0.5 transition-all duration-300 whitespace-nowrap">
-            Báo giá
-          </Link>
-          <Link href="/lien-he" className="px-4 xl:px-5 py-2 xl:py-2.5 rounded-full bg-[#f97316] text-[13px] xl:text-sm text-white font-bold hover:bg-orange-400 hover:shadow-lg hover:shadow-orange-500/30 hover:-translate-y-0.5 transition-all duration-300 whitespace-nowrap">
-            Đăng ký tư vấn
+          <Link href="/bao-gia" className="ml-1 px-5 xl:px-6 py-2.5 xl:py-3 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 text-[13px] xl:text-sm text-white font-black uppercase tracking-wider hover:shadow-[0_0_20px_rgba(34,211,238,0.4)] hover:-translate-y-0.5 transition-all duration-300 whitespace-nowrap border-b-4 border-blue-700 active:border-b-0 active:translate-y-0.5">
+            Dùng thử
           </Link>
         </div>
 
@@ -313,35 +330,45 @@ export default function Navbar() {
           ))}
 
           <div className="h-px bg-white/10 my-3"></div>
-          <div className="flex gap-2 px-3 mb-2">
-            {[
-              { code: 'vi', label: 'Tiếng Việt' },
-              { code: 'en', label: 'English' },
-              { code: 'zh-CN', label: '中文' },
-            ].map((lang) => (
-              <button
-                key={lang.code}
-                onClick={() => {
-                  const syntheticEvent = { target: { value: lang.code } } as React.ChangeEvent<HTMLSelectElement>;
-                  handleLanguageChange(syntheticEvent);
-                }}
-                className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${
-                  language === lang.code
-                    ? 'bg-orange-500 text-white'
-                    : 'text-slate-300 hover:text-white hover:bg-white/10'
-                }`}
-              >
-                {lang.label}
-              </button>
-            ))}
+          
+          <div className="px-3 mb-2">
+            <div className="flex items-center gap-2 mb-3 text-slate-400 text-xs font-bold uppercase tracking-widest px-1">
+              <Globe size={14} /> Ngôn ngữ
+            </div>
+            <div className="grid grid-cols-3 gap-2">
+              {[
+                { code: 'vi', flag: '🇻🇳', label: 'VN' },
+                { code: 'en', flag: '🇬🇧', label: 'EN' },
+                { code: 'zh-CN', flag: '🇨🇳', label: 'CN' },
+              ].map((lang) => (
+                <button
+                  key={lang.code}
+                  onClick={() => {
+                    const syntheticEvent = { target: { value: lang.code } } as React.ChangeEvent<HTMLSelectElement>;
+                    handleLanguageChange(syntheticEvent);
+                  }}
+                  className={`flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-bold transition-all border ${
+                    language === lang.code
+                      ? 'bg-orange-500 border-orange-500 text-white shadow-lg shadow-orange-500/20'
+                      : 'bg-white/5 border-white/10 text-slate-300 hover:bg-white/10'
+                  }`}
+                >
+                  <span>{lang.flag}</span>
+                  <span>{lang.label}</span>
+                </button>
+              ))}
+            </div>
           </div>
-          <Link
-            href="/lien-he"
-            className="block px-5 py-3 rounded-full bg-[#f97316] text-white font-semibold text-center mt-2 hover:bg-orange-400 transition-colors"
-            onClick={() => setMobileMenuOpen(false)}
-          >
-            Đăng ký tư vấn
-          </Link>
+
+          <div className="flex flex-col mt-4 px-3 pb-4">
+            <Link
+              href="/bao-gia"
+              className="w-full px-5 py-3.5 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 text-white font-black text-center text-sm uppercase tracking-wider border-b-4 border-blue-700 active:border-b-0 active:translate-y-0.5"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Dùng thử
+            </Link>
+          </div>
         </div>
       )}
     </header>
