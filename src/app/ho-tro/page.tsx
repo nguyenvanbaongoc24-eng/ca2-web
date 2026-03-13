@@ -41,6 +41,41 @@ const faqs = [
 ];
 
 export default function SupportPage() {
+  const [formData, setFormData] = React.useState({
+    full_name: '',
+    phone: '',
+    ultraview_id: '',
+    ultraview_pass: '',
+    issue_type: ''
+  });
+  const [loading, setLoading] = React.useState(false);
+  const [status, setStatus] = React.useState<'idle' | 'success' | 'error'>('idle');
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setStatus('idle');
+
+    const { error } = await supabase
+      .from('support_requests')
+      .insert([formData]);
+
+    setLoading(false);
+    if (error) {
+      console.error('Error submitting form:', error);
+      setStatus('error');
+    } else {
+      setStatus('success');
+      setFormData({
+        full_name: '',
+        phone: '',
+        ultraview_id: '',
+        ultraview_pass: '',
+        issue_type: ''
+      });
+    }
+  };
+
   return (
     <main className="pt-24 min-h-screen bg-slate-50">
       {/* Hero Section */}
@@ -114,26 +149,72 @@ export default function SupportPage() {
                 <p className="text-slate-500">Điền thông tin Ultraview/Anydesk để kỹ thuật viên hỗ trợ bạn ngay lập tức.</p>
               </div>
 
-              <form className="grid md:grid-cols-2 gap-6">
+              {status === 'success' && (
+                <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="mb-8 p-6 bg-green-100 border border-green-200 text-green-700 rounded-3xl flex items-center gap-4">
+                  <CheckCircle2 size={24} />
+                  <span className="font-bold">Yêu cầu đã được gửi thành công! Kỹ thuật viên sẽ liên hệ bạn ngay.</span>
+                </motion.div>
+              )}
+
+              {status === 'error' && (
+                <div className="mb-8 p-6 bg-red-100 border border-red-200 text-red-700 rounded-3xl font-bold">
+                  Có lỗi xảy ra khi gửi yêu cầu. Vui lòng thử lại hoặc gọi Hotline.
+                </div>
+              )}
+
+              <form onSubmit={handleSubmit} className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-sm font-bold text-slate-700 ml-1">Họ và Tên</label>
-                  <input type="text" placeholder="Nguyễn Văn A" className="w-full px-5 py-4 rounded-2xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all bg-white" />
+                  <input 
+                    required
+                    type="text" 
+                    value={formData.full_name}
+                    onChange={(e) => setFormData({...formData, full_name: e.target.value})}
+                    placeholder="Nguyễn Văn A" 
+                    className="w-full px-5 py-4 rounded-2xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all bg-white" 
+                  />
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-bold text-slate-700 ml-1">Số điện thoại</label>
-                  <input type="tel" placeholder="09xx xxx xxx" className="w-full px-5 py-4 rounded-2xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all bg-white" />
+                  <input 
+                    required
+                    type="tel" 
+                    value={formData.phone}
+                    onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                    placeholder="09xx xxx xxx" 
+                    className="w-full px-5 py-4 rounded-2xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all bg-white" 
+                  />
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-bold text-slate-700 ml-1">ID Ultraview / Anydesk</label>
-                  <input type="text" placeholder="12 345 678" className="w-full px-5 py-4 rounded-2xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all bg-white" />
+                  <input 
+                    required
+                    type="text" 
+                    value={formData.ultraview_id}
+                    onChange={(e) => setFormData({...formData, ultraview_id: e.target.value})}
+                    placeholder="12 345 678" 
+                    className="w-full px-5 py-4 rounded-2xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all bg-white" 
+                  />
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-bold text-slate-700 ml-1">Mật khẩu (Password)</label>
-                  <input type="text" placeholder="xxxx" className="w-full px-5 py-4 rounded-2xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all bg-white" />
+                  <input 
+                    required
+                    type="text" 
+                    value={formData.ultraview_pass}
+                    onChange={(e) => setFormData({...formData, ultraview_pass: e.target.value})}
+                    placeholder="xxxx" 
+                    className="w-full px-5 py-4 rounded-2xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all bg-white" 
+                  />
                 </div>
                 <div className="md:col-span-2 space-y-2">
                   <label className="text-sm font-bold text-slate-700 ml-1">Nội dung cần hỗ trợ</label>
-                  <select className="w-full px-5 py-4 rounded-2xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all bg-white appearance-none">
+                  <select 
+                    required
+                    value={formData.issue_type}
+                    onChange={(e) => setFormData({...formData, issue_type: e.target.value})}
+                    className="w-full px-5 py-4 rounded-2xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all bg-white appearance-none"
+                  >
                     <option value="">-- Chọn vấn đề cần xử lý --</option>
                     <option value="cks">Cài đặt chữ ký số (USB Token)</option>
                     <option value="app">Cài đặt app ký số trên máy tính</option>
@@ -143,8 +224,13 @@ export default function SupportPage() {
                   </select>
                 </div>
                 <div className="md:col-span-2 mt-4">
-                  <button type="button" className="w-full py-5 bg-blue-600 hover:bg-blue-700 text-white font-extrabold rounded-2xl transition-all shadow-lg shadow-blue-200 flex items-center justify-center gap-3 group">
-                    Gửi yêu cầu kỹ thuật <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                  <button 
+                    disabled={loading}
+                    type="submit" 
+                    className={`w-full py-5 text-white font-extrabold rounded-2xl transition-all shadow-lg flex items-center justify-center gap-3 group ${loading ? 'bg-slate-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700 shadow-blue-200'}`}
+                  >
+                    {loading ? 'Đang gửi yêu cầu...' : 'Gửi yêu cầu kỹ thuật'} 
+                    {!loading && <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />}
                   </button>
                 </div>
               </form>
