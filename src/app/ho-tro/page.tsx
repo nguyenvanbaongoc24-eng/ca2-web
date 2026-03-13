@@ -100,6 +100,59 @@ export default function SupportPage() {
         </div>
       </section>
 
+      {/* Quick Support Form Section */}
+      <section id="quick-support" className="py-20 bg-white">
+        <div className="container mx-auto px-6 lg:px-12">
+          <div className="max-w-4xl mx-auto bg-slate-50 rounded-[40px] p-8 lg:p-12 border border-slate-200 shadow-sm relative overflow-hidden">
+            <div className="absolute top-0 right-0 p-8 opacity-5">
+              <HelpCircle size={120} className="text-blue-900" />
+            </div>
+            
+            <div className="relative z-10">
+              <div className="mb-10 text-center lg:text-left">
+                <h2 className="text-3xl font-extrabold text-slate-800 mb-4">Gửi yêu cầu Hỗ trợ nhanh</h2>
+                <p className="text-slate-500">Điền thông tin Ultraview/Anydesk để kỹ thuật viên hỗ trợ bạn ngay lập tức.</p>
+              </div>
+
+              <form className="grid md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <label className="text-sm font-bold text-slate-700 ml-1">Họ và Tên</label>
+                  <input type="text" placeholder="Nguyễn Văn A" className="w-full px-5 py-4 rounded-2xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all bg-white" />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-bold text-slate-700 ml-1">Số điện thoại</label>
+                  <input type="tel" placeholder="09xx xxx xxx" className="w-full px-5 py-4 rounded-2xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all bg-white" />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-bold text-slate-700 ml-1">ID Ultraview / Anydesk</label>
+                  <input type="text" placeholder="12 345 678" className="w-full px-5 py-4 rounded-2xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all bg-white" />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-bold text-slate-700 ml-1">Mật khẩu (Password)</label>
+                  <input type="text" placeholder="xxxx" className="w-full px-5 py-4 rounded-2xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all bg-white" />
+                </div>
+                <div className="md:col-span-2 space-y-2">
+                  <label className="text-sm font-bold text-slate-700 ml-1">Nội dung cần hỗ trợ</label>
+                  <select className="w-full px-5 py-4 rounded-2xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all bg-white appearance-none">
+                    <option value="">-- Chọn vấn đề cần xử lý --</option>
+                    <option value="cks">Cài đặt chữ ký số (USB Token)</option>
+                    <option value="app">Cài đặt app ký số trên máy tính</option>
+                    <option value="invoice">Lỗi xuất hóa đơn điện tử</option>
+                    <option value="bhxh">Lỗi kê khai BHXH</option>
+                    <option value="other">Vấn đề khác...</option>
+                  </select>
+                </div>
+                <div className="md:col-span-2 mt-4">
+                  <button type="button" className="w-full py-5 bg-blue-600 hover:bg-blue-700 text-white font-extrabold rounded-2xl transition-all shadow-lg shadow-blue-200 flex items-center justify-center gap-3 group">
+                    Gửi yêu cầu kỹ thuật <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* FAQ & Contact */}
       <section className="py-20">
         <div className="container mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-16">
